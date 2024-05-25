@@ -1,0 +1,37 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #D4B79B;
+  padding: 10px;
+}
+
+.logo {
+  max-width: 100%;
+  height: auto;
+  max-height: 50px; /* Ajusta la altura máxima del logo según tus necesidades */
+}
+
+.ms-auto{
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar .login{
+  border: 2px solid #856800;
+  border-radius: 5px;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.navbar .nav-link{
+  color: #856800;
+  margin-left: 20px;
+
+}
+
+@media (max-width: 576px) {
+  .navbar {
+    justify-content: center; /* Centra los elementos en pantallas pequeñas */
+  }
+}
