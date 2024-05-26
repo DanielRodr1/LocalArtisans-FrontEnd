@@ -49,11 +49,18 @@
             </div>
             <div class="col-md-4">
               <label for="role" class="form-label">Rol</label>
-              <select id="role" class="form-select" required>
-                <option>Vendedor</option>
-                <option>Cliente</option>
+              <select id="role" class="form-select" required (change)="onRoleChange($event)">
+                <option value="">Seleccione una opción</option>
+                <option value="vendedor">Vendedor</option>
+                <option value="cliente">Cliente</option>
               </select>
             </div>
+            <blockquote class="blockquote" *ngIf="codigo">
+              <div class="col-md-12">
+                <label for="codigoArtesano" class="form-label">Código de Artesano</label>
+                <input type="text" class="form-control" id="codigoArtesano" required>
+              </div>
+            </blockquote>
             <div class="col-md-12">
               <label for="passwordRegister" class="form-label">Contraseña</label>
               <input type="password" class="form-control" id="passwordRegister" placeholder="Ingrese una contraseña" required>
