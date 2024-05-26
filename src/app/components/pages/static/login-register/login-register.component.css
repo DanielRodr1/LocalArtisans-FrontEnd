@@ -1,0 +1,90 @@
+div .login{
+  text-align: right;
+  font-weight: bold;
+}
+
+div .register{
+  text-align: left;
+  font-weight: bold;
+}
+
+div.row{
+  text-align: center;
+}
+
+.mb-3{
+  justify-content: center;
+}
+
+.nav-link{
+  height: 10px;
+  width: 200px;
+  background-color: #D9A57D;
+  border-color: #D9A57D;
+  border-radius: 0;
+}
+
+.nav-pills .nav-link.active {
+  background-color: #BA6F36; /* Color de fondo de las pestañas activas */
+}
+
+div.d-flex{
+  display: flex;
+  flex-direction: column;
+}
+
+
+/*LOGIN ESTILOS*/
+
+form.form-login{
+  width: 400px;
+}
+
+form.form-login label{
+  margin-top: 5px;
+  font-weight: bolder;
+}
+
+form.form-login input{
+  border-color: black;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+form.form-login button.btn{
+  background-color: #B8885B;
+  border-color: black;
+  width: 400px;
+  margin-top: 20px;
+}
+
+/*REGISTRO ESTILOS*/
+
+form.form-register{
+  width: 400px;
+}
+
+form.form-register label{
+  margin-top: 5px;
+  font-weight: bolder;
+}
+
+form.form-register input{
+  border-color: black;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+form.form-register select{
+  border-color: black;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+form.form-register button.btn{
+  background-color: #B8885B;
+  border-color: black;
+  width: 400px;
+  margin-top: 20px;
+}
+
