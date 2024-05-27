@@ -1,0 +1,26 @@
+.carousel-indicators button{
+  background-color: black;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+
+.caption-text {
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo negro con transparencia */
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 51%; /* Limita el ancho del texto */
+}
+
+@media (max-width: 768px) {
+  .caption-text {
+    padding: 10px;
+  }
+}
