@@ -39,37 +39,50 @@
         <div class="d-flex align-items-center">
           <form class="form-register row g-3">
             <div class="col-md-12">
-              <label for="fullName" class="form-label">Nombre Completo</label>
-              <input type="text" class="form-control" id="fullName" placeholder="Ingrese su nombre Completo" required>
+              <label for="inputFullName" class="form-label">Nombre Completo</label>
+              <input type="text" class="form-control" id="inputFullName" name="fullName" placeholder="Ingrese su nombre Completo" required [(ngModel)]="fullName">
             </div>
 
             <div class="col-md-8">
-              <label for="emailRegister" class="form-label">Correo</label>
-              <input type="email" class="form-control" id="emailRegister" required>
+              <label for="inputEmailRegister" class="form-label">Correo</label>
+              <input type="email" class="form-control" id="inputEmailRegister" name="email" [(ngModel)]="email" required placeholder="Ingrese su correo">
             </div>
             <div class="col-md-4">
-              <label for="role" class="form-label">Rol</label>
-              <select id="role" class="form-select" required (change)="onRoleChange($event)">
-                <option value="">Seleccione una opción</option>
+              <label for="inputUserType" class="form-label">Rol</label>
+              <select id="inputUserType" class="form-select" name="userType" required (change)="onRoleChange($event)" [(ngModel)]="userType">
+                <option selected>Seleccione una opción</option>
                 <option value="vendedor">Vendedor</option>
                 <option value="cliente">Cliente</option>
               </select>
             </div>
             <blockquote class="blockquote" *ngIf="codigo">
               <div class="col-md-12">
-                <label for="codigoArtesano" class="form-label">Código de Artesano</label>
-                <input type="text" class="form-control" id="codigoArtesano" required>
+                <label for="inputCodigoArtesano" class="form-label">Código de Artesano</label>
+                <input type="text" class="form-control" id="inputCodigoArtesano" name="codigoArtesano" required>
               </div>
             </blockquote>
+            <div class="col-md-5">
+              <label for="inputDni" class="form-label">Dni</label>
+              <input type="number" class="form-control" id="inputDni" name="dni" [(ngModel)]="dni" required placeholder="DNI-8 dígitos">
+            </div>
+            <div class="col-md-7">
+              <label for="inputCellPhone" class="form-label">Número de celular</label>
+              <input type="number" class="form-control" id="inputCellPhone" name="phone" [(ngModel)]="phone" required placeholder="Num. de celular - 9 dígitos max">
+            </div>
+
             <div class="col-md-12">
-              <label for="passwordRegister" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="passwordRegister" placeholder="Ingrese una contraseña" required>
+              <label for="inputPasswordRegister" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="inputPasswordRegister" name="password" placeholder="Ingrese una contraseña" [(ngModel)]="password" required>
             </div>
             <div class="col-md-12">
-              <label for="passwordRegisterValidation" class="form-label">Confirme Contraseña </label>
-              <input type="password" class="form-control" id="passwordRegisterValidation" placeholder="Confirmar contraseña" required>
+              <label for="inputPasswordRegisterValidation" class="form-label">Confirme Contraseña </label>
+              <input type="password" class="form-control" id="inputPasswordRegisterValidation" name="passwordValidation" [(ngModel)]="passwordValidation" placeholder="Confirmar contraseña" required>
             </div>
-            <button class="btn btn-register" type="submit">Crear Cuenta</button>
+            <div class="col-md-12">
+              <label for="inputProfileImage" class="form-label">Ingrese su imagen </label>
+              <input type="text" class="form-control" id="inputProfileImage" name="profileImage" placeholder="Ingrese su imagen" [(ngModel)]="profileImage" required>
+            </div>
+            <button class="btn btn-register" type="button" (click)="crearUsuario()">Crear Cuenta</button>
           </form>
         </div>
       </div>
