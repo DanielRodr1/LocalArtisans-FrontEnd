@@ -1,0 +1,64 @@
+<div class="container-fluid">
+  <form class="formClass">
+    <div class="mainContainer">
+      <div class="col-md-6 fileDiv">
+        <label for="uploadImage" class="noStyleLabel">
+          <img class="imgFile" src="./assets/Img/img5.png">
+        </label>
+        <input class="noStyleInput" type="file" id="uploadImage" accept="image/*">
+      </div>
+      <div class="col-md-6">
+        <label>Título</label><br>
+        <input class="inputTitle" type="text" id="titleInput" placeholder="Título">
+        <span class="spanLocation">
+          <div>
+            <label class="labelLocation">Departamento</label><br>
+            <select class="selectLocation" id="selectDepartamento">
+              <option>...</option>
+            </select>
+          </div>
+          <div>
+            <label class="labelLocation">Provincia</label><br>
+            <select class="selectLocation" id="selectProvincia">
+              <option>...</option>
+            </select>
+          </div>
+          <div>
+            <label class="labelLocation">Distrito</label><br>
+            <select class="selectLocation" id="selectDistrito">
+              <option>...</option>
+            </select>
+          </div>
+        </span>
+        <span class="spanCategory">
+          <div>
+            <label>Precio</label>
+            <span class="spanPrice">
+              <label>S/.</label>
+              <input class="inputPrice" type="text" id="priceInput" placeholder="0.00">
+            </span>
+          </div>
+          <div>
+            <label>Categoría</label><br>
+            <select class="selectCategory" id="selectCategory">
+              <option>Arte</option>
+              <option>Joyería</option>
+              <option>Textilería</option>
+              <option>Accesorios</option>
+              <option>Hogar</option>
+            </select>
+          </div>
+        </span>
+
+        <label>Descripción</label><br>
+        <textarea class="inputDescription" placeholder="..."></textarea>
+      </div>
+    </div>
+    <div class="buttonDiv">
+      <button class="buttonForm" type="submit">Publicar</button>
+    </div>
+
+  </form>
+</div>
+
+
