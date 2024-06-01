@@ -1,0 +1,69 @@
+body {
+  background-color: #f1eeea;
+  font-family: "Josefin Slab", sans-serif;
+}
+
+
+imput.form-control{
+  border: 2px ;
+}
+button{
+  font-family: "Josefin Slab", sans-serif;
+  }
+
+h2{
+  font-family: "Josefin Slab", sans-serif;
+  margin: 0 auto;
+}
+p,span {
+  font-family: "Josefin Slab", sans-serif;
+
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: auto;
+  width: 50%;
+  padding-top: 10px;
+}
+
+.faq .head {
+  display: flex;
+  padding: 20px ;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+
+}
+
+.faq.active .head svg {
+  transform: rotate(180deg);
+  ;
+
+}
+
+.faq .content {
+  border-bottom: 1px solid #afafaf;
+  display: none;
+  overflow: hidden;
+}
+
+.faq.active .content {
+  display: block;
+}
+.head{
+  width: 800px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  padding: 220px;           /* Espacio interior alrededor del contenido */
+  margin: 10px;
+}
+
+
+.content{
+  width: 800px;
+}
+
