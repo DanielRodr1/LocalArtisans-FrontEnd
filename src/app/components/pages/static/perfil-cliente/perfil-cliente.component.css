@@ -1,0 +1,117 @@
+/*.profile-container {
+  margin-top: 20px;
+}
+
+.profile-sidebar {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.profile-pic img {
+  width: 150px;
+  height: 150px;
+}
+
+.profile-title {
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+}
+
+.profile-info ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.profile-main {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.d-flex select {
+  margin-right: 5px;
+}*/
+
+.profile-container {
+  margin-top: 20px;
+}
+
+.profile-sidebar {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.profile-pic img {
+  display: block;
+  margin: 0 auto;
+  width: 250px; /* Ajusta este valor según el tamaño deseado */
+  height: 250px; /* Mantén las proporciones o ajusta según sea necesario */
+  object-fit: cover; /* Asegura que la imagen se recorte adecuadamente si es necesario */
+}
+
+.profile-pic button {
+  display: block;
+  margin: 20px auto 0; /* Ajusta los márgenes según sea necesario */
+}
+
+.profile-title {
+  font-family: 'Arial', sans-serif;
+  font-size: 35px;
+}
+
+.profile-info ul {
+  padding-left: 0;
+  list-style-type: none;
+  text-align: left;
+}
+
+.profile-main {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.d-flex select {
+  margin-right: 5px;
+}
+
+/* Cambiar el color del botón "Guardar" */
+.btn-primary {
+  background-color: #D2B48C; /* Color de fondo */
+  border-color: #000000;     /* Color del borde */
+  color: #000000;              /* Color del texto */
+}
+
+.btn-primary:hover {
+  background-color: #c68229; /* Color de fondo al pasar el ratón */
+  border-color: #ffffff;     /* Color del borde al pasar el ratón */
+}
+
+/* Cambiar el color del botón "Cancelar" */
+.btn-secondary {
+  background-color: #ffffff; /* Color de fondo */
+  border-color: #ffffff;     /* Color del borde */
+  color: #000000;              /* Color del texto */
+}
+
+.btn-secondary:hover {
+  background-color: #f1f1f1; /* Color de fondo al pasar el ratón */
+  border-color: #d1d1d1;     /* Color del borde al pasar el ratón */
+}
+
+
+
+

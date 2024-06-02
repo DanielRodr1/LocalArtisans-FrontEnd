@@ -1,0 +1,100 @@
+
+<div class="container profile-container">
+  <div class="row">
+    <div class="col-md-4 text-center profile-sidebar">
+      <div class="profile-pic">
+        <img src="./assets/Perfil/image-perfil.png" alt="Foto de perfil" class="img-fluid rounded-circle">
+        <button class="btn btn-outline-primary btn-sm mt-2">
+          <i class="fas fa-edit"></i> Editar fotos
+        </button>
+      </div>
+      <div class="profile-info mt-4">
+        <h2 class="profile-title">Perfil</h2>
+        <ul class="list-unstyled">
+          <li><strong>Compras realizadas:</strong> 4</li>
+          <li><strong>Interacción con proveedores:</strong> 40%</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-8 profile-main">
+      <h2 class="profile-title">Editar Perfil</h2>
+      <form>
+        <div class="form-group">
+          <label for="username">Nombre de usuario</label>
+          <input type="text" class="form-control" id="username" value="cg_2024" readonly>
+        </div>
+        <div class="form-group">
+          <label for="user-type">Tipo</label>
+          <input type="text" class="form-control" id="user-type" value="Cliente" readonly>
+        </div>
+        <div class="form-group">
+          <label for="payment-method">Método de pago</label>
+          <select class="form-control" id="payment-method">
+            <option>Tarjeta de débito</option>
+            <option>Tarjeta de crédito</option>
+            <option>PayPal</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" value="carl_gil2024@gmail.com">
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" class="form-control" id="password" value="***************">
+        </div>
+        <div class="form-group">
+          <label for="gender">Sexo</label>
+          <select class="form-control" id="gender">
+            <option>Masculino</option>
+            <option>Femenino</option>
+            <option>No binario</option>
+            <option>Transexual</option>
+            <option>Bisexual</option>
+            <option>Maraco</option>
+            <option>Me gusta la Phyton</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="birth-day">Fecha de nacimiento</label>
+          <div class="d-flex">
+            <select class="form-control" id="birth-day">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+            </select>
+            <select class="form-control" id="birth-month">
+              <option>Enero</option>
+              <option>Febrero</option>
+
+            </select>
+            <select class="form-control" id="birth-year">
+              <option>2000</option>
+              <option>2001</option>
+              <!-- Añadir otros años aquí -->
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="region">Región</label>
+          <select class="form-control" id="region">
+            <option>La Libertad</option>
+            <!-- Añadir otras regiones aquí -->
+          </select>
+        </div>
+        <button type="reset" class="btn btn-secondary">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </form>
+    </div>
+  </div>
+</div>
+

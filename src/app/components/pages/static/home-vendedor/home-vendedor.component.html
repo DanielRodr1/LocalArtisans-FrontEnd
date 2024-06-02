@@ -1,0 +1,57 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+<div class="container-fluid">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="./assets/carousel images/1imagecarrousel.png" class="d-block w-100" alt="Slide 1">
+      </div>
+      <div class="carousel-item">
+        <img src="./assets/carousel images/image2carrousel.png" class="d-block w-100" alt="Slide 2">
+      </div>
+      <div class="carousel-item">
+        <img src="./assets/carousel images/image3corrusel.png" class="d-block w-100" alt="Slide 3">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="header ">
+    <h1>¡HOLA, WALTER LETURIA!</h1>
+    <p>Publica tus productos rápidamente y comienza a vender. Completa los siguientes pasos para añadir una nueva creación.</p>
+  </div>
+  <div class="options">
+    <div class="option" (click)="selectCategory('textil')">
+      <img src="./assets/carousel images/image1carrousel.png" alt="Textil">
+      <div class="option-title">TEXTIL</div>
+    </div>
+    <div class="option" (click)="selectCategory('ceramica')">
+      <img src="./assets/carousel images/imagen_ceramica.png" alt="Ceramica">
+      <div class="option-title">CERAMICA</div>
+    </div>
+    <div class="option" (click)="selectCategory('joyeria')">
+      <img src="./assets/carousel images/imagen_joyeria.png" alt="Joyería">
+      <div class="option-title">JOYERÍA</div>
+    </div>
+  </div>
+  <div class="footer">
+    <p>Selecciona una opción y publica tus últimas creaciones con facilidad. Fija el precio y fotos en unos pocos pasos.</p>
+  </div>
+</div>
+
