@@ -28,11 +28,11 @@ h2 {
 
 /*PERSONALIZACIÓN BOTONES CARRUSEL CATEGORÍAS*/
 .carousel button.carousel-control-prev{
-  justify-content: end;
+  justify-content: start;
 }
 
 .carousel button.carousel-control-next{
-  justify-content: start;
+  justify-content: end;
 }
 
 .carousel-control-prev-icon {
