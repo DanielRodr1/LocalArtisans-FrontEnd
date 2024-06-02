@@ -1,0 +1,96 @@
+.spanSearch{
+  display: flex;
+  text-align: center;
+  padding-right: 20%;
+  padding-left: 20%;
+  margin-top: 20px;
+}
+.spanSearch > div {
+  width: calc(25%);
+}
+.mainCatalog{
+  text-align: center;
+}
+.selectCatalog{
+  width: 60%;
+  margin-top: 10px;
+}
+.labelCatalog{
+}
+.hCatalog{
+  margin-top: 20px;
+}
+select{
+  height: 35px;
+  border-radius: 8px;
+  border: 1px solid #222222;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.productsList{
+  display: flex;
+  text-align: center;
+  padding-top: 20px;
+  margin: 5%;
+}
+.imgProduct{
+  height: 250px;
+  object-fit: cover;
+}
+.textCard{
+  text-align: left;
+  width: 100%;
+  margin: 10px;
+}
+.imgProduct{
+  cursor: pointer;
+
+}
+.imgHeart{
+  object-fit: cover;
+  width: 40%;
+}
+.cardProduct{
+  display: flex;
+}
+.spanProduct{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.productHeart{
+  text-align: end;
+  padding-right: 10px;
+  cursor: pointer;
+}
+.divSpan{
+  width: 100%;
+  display: flex;
+}
+
+.priceText{
+  margin-top: 5px;
+}
+.colorCard{
+  background: #F7EFEF;
+}
+
+.listPagination{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination .page-link {
+  color: black; /* Cambia el color del texto a negro */
+}
+
+.pagination .page-link:hover {
+  color: black; /* Mantiene el color negro al pasar el mouse por encima */
+}
+
+.font-josefin{
+  font-family: "Josefin Slab", serif;
+  font-weight: bolder;
+}

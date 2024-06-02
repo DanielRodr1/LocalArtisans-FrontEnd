@@ -1,0 +1,139 @@
+.container-fluid {
+  padding: 20px; /* Agrega un poco de espaciado al contenedor */
+}
+
+.mainContainer {
+  display: flex;
+}
+
+.col-md-6 {
+  width: 50%; /* Define el ancho del 50% para cada columna */
+  box-sizing: border-box;
+}
+
+.spanLocation {
+  display: flex;
+  flex-wrap: wrap; /* Para que los elementos se envuelvan si no caben en una sola fila */
+}
+
+.spanLocation > div {
+  width: calc(33.33%); /* Calcula el ancho de cada div para que haya tres divs en una fila */
+  padding-bottom: 10px;
+}
+
+.spanCategory > div{
+  width: calc(50%);
+}
+.selectLocation{
+  margin-top: 10px;
+  width: 80%;
+}
+
+.labelLocation {
+  padding-right: 25px;
+  padding-top: 10px;
+}
+
+
+.inputTitle {
+  margin-top: 10px;
+  width: 40%;
+}
+
+.inputDescription{
+  margin-top: 10px;
+  width: 93.5%;
+}
+
+.spanPrice {
+  display: flex;
+  align-items: center; /* Alinea verticalmente los elementos en la línea */
+  padding: 10px;
+}
+
+.inputPrice{
+  margin-left: 8px;
+  width: 80%;
+}
+
+/* Estilo adicional para el botón */
+button {
+  margin-top: 20px; /* Agrega un poco de margen superior al botón */
+}
+
+.spanCategory{
+  display: flex;
+}
+
+.selectCategory{
+  margin-top: 10px;
+  width: 87%;
+}
+
+label{
+  font-weight: lighter;
+}
+input{
+  height: 35px;
+  border-radius: 8px;
+  border: 1px solid #222222;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+select{
+  height: 35px;
+  border-radius: 8px;
+  border: 1px solid #222222;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+textarea{
+  border-radius: 8px;
+  border: 1px solid #222222;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.buttonForm{
+  background: #B8885B;
+  width: 10%;
+  height: 35px;
+  border-radius: 8px;
+  border: 1px solid #222222;
+  font-weight: bold;
+}
+
+.buttonDiv{
+  padding-top: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+label.noStyleLabel{
+  padding-right: 0;
+}
+
+input.noStyleInput{
+  width: 0px;
+  height: 0px;
+  border: 0px solid #0000;
+}
+.imgFile{
+  object-fit: cover;
+  max-width: 20%;
+  height: auto;
+}
+
+.fileDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.font-josefin{
+  font-family: "Josefin Slab", serif;
+  font-weight: bolder;
+  font-size: 20px;
+}
