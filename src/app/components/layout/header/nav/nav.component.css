@@ -3,7 +3,6 @@
   align-items: center;
   background-color: #D4B79B;
   padding: 10px;
-  margin-bottom: 40px;
 }
 
 .logo {
@@ -26,9 +25,12 @@
 }
 
 .navbar .nav-link{
-  color: #856800;
+  color: #654e00;
   margin-left: 20px;
+}
 
+a{
+  font-weight: bolder;
 }
 
 @media (max-width: 576px) {
