@@ -1,4 +1,7 @@
-<div class="container-fluid">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+<div class="container-fluid font-josefin">
   <form class="formClass">
     <div class="mainContainer">
       <div class="col-md-6 fileDiv">
@@ -8,23 +11,23 @@
         <input class="noStyleInput" type="file" id="uploadImage" accept="image/*">
       </div>
       <div class="col-md-6">
-        <label>Título</label><br>
+        <label><strong>Título</strong></label><br>
         <input class="inputTitle" type="text" id="titleInput" placeholder="Título">
         <span class="spanLocation">
           <div>
-            <label class="labelLocation">Departamento</label><br>
+            <label class="labelLocation"><strong>Departamento</strong></label><br>
             <select class="selectLocation" id="selectDepartamento">
               <option>...</option>
             </select>
           </div>
           <div>
-            <label class="labelLocation">Provincia</label><br>
+            <label class="labelLocation"><strong>Provincia</strong></label><br>
             <select class="selectLocation" id="selectProvincia">
               <option>...</option>
             </select>
           </div>
           <div>
-            <label class="labelLocation">Distrito</label><br>
+            <label class="labelLocation"><strong>Distrito</strong></label><br>
             <select class="selectLocation" id="selectDistrito">
               <option>...</option>
             </select>
@@ -32,14 +35,14 @@
         </span>
         <span class="spanCategory">
           <div>
-            <label>Precio</label>
+            <label><strong>Precio</strong></label>
             <span class="spanPrice">
               <label>S/.</label>
               <input class="inputPrice" type="text" id="priceInput" placeholder="0.00">
             </span>
           </div>
           <div>
-            <label>Categoría</label><br>
+            <label><strong>Categoría</strong></label><br>
             <select class="selectCategory" id="selectCategory">
               <option>Arte</option>
               <option>Joyería</option>
@@ -50,7 +53,7 @@
           </div>
         </span>
 
-        <label>Descripción</label><br>
+        <label><strong>Descripción</strong></label><br>
         <textarea class="inputDescription" placeholder="..."></textarea>
       </div>
     </div>

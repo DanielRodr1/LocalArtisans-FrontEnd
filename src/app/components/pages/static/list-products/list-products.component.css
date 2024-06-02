@@ -89,3 +89,8 @@ select{
 .pagination .page-link:hover {
   color: black; /* Mantiene el color negro al pasar el mouse por encima */
 }
+
+.font-josefin{
+  font-family: "Josefin Slab", serif;
+  font-weight: bolder;
+}

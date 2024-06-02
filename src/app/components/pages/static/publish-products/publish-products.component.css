@@ -34,6 +34,7 @@
   padding-top: 10px;
 }
 
+
 .inputTitle {
   margin-top: 10px;
   width: 40%;
@@ -129,4 +130,10 @@ input.noStyleInput{
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.font-josefin{
+  font-family: "Josefin Slab", serif;
+  font-weight: bolder;
+  font-size: 20px;
 }
