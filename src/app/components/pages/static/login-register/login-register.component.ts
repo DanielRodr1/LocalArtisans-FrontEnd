@@ -27,6 +27,7 @@ export class LoginRegisterComponent implements OnInit{
   public profileImage:string;
   public password:string;
   public passwordValidation: string;
+  public codigoArtesano: string;
 
 
   public constructor(private _userService: UserServiceService) {
@@ -37,6 +38,7 @@ export class LoginRegisterComponent implements OnInit{
     this.dni = '';
     this.email = '';
     this.phone = '';
+    this.codigoArtesano = '';
     this.userType = '';
     this.profileImage = '';
     this.password = '';
@@ -66,6 +68,7 @@ export class LoginRegisterComponent implements OnInit{
     user.fullName = this.fullName;
     user.profileImage = this.profileImage;
     user.dni = this.dni;
+    user.codigoArtesano = this.codigoArtesano;
     user.userType = this.userType;
     user.phone = this.phone;
 
@@ -89,6 +92,7 @@ export class LoginRegisterComponent implements OnInit{
     this.password = '';
     this.profileImage = '';
     this.dni = '';
+    this.codigoArtesano = '';
     this.userType = '';
     this.phone = '';
     this.passwordValidation = '';

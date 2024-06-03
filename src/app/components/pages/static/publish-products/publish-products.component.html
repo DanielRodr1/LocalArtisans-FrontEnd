@@ -2,63 +2,42 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 <div class="container-fluid font-josefin">
+  <h1 style="text-align: center; margin-bottom: 20px;">SUBA SU PRODUCTO</h1>
   <form class="formClass">
     <div class="mainContainer">
+
       <div class="col-md-6 fileDiv">
         <label for="uploadImage" class="noStyleLabel">
-          <img class="imgFile" src="./assets/Img/img5.png">
+          <img class="imgFile" src="./assets/Img/img5.png" alt="subir imagen">
         </label>
         <input class="noStyleInput" type="file" id="uploadImage" accept="image/*">
       </div>
       <div class="col-md-6">
-        <label><strong>Título</strong></label><br>
-        <input class="inputTitle" type="text" id="titleInput" placeholder="Título">
-        <span class="spanLocation">
-          <div>
-            <label class="labelLocation"><strong>Departamento</strong></label><br>
-            <select class="selectLocation" id="selectDepartamento">
-              <option>...</option>
-            </select>
-          </div>
-          <div>
-            <label class="labelLocation"><strong>Provincia</strong></label><br>
-            <select class="selectLocation" id="selectProvincia">
-              <option>...</option>
-            </select>
-          </div>
-          <div>
-            <label class="labelLocation"><strong>Distrito</strong></label><br>
-            <select class="selectLocation" id="selectDistrito">
-              <option>...</option>
-            </select>
-          </div>
-        </span>
-        <span class="spanCategory">
+        <label for="titleInput" class="form-label"><strong>Título</strong></label><br>
+        <input name="name" type="text" id="titleInput" class="form-control inputTitle" placeholder="Título" [(ngModel)]="name">
+        <div class=" row spanCategory">
           <div>
             <label><strong>Precio</strong></label>
-            <span class="spanPrice">
-              <label>S/.</label>
-              <input class="inputPrice" type="text" id="priceInput" placeholder="0.00">
-            </span>
+            <div class="spanPrice">
+              <label for="priceInput" class="form-label">S/.</label>
+              <input class="form-control inputPrice" name="price" type="text" id="priceInput" placeholder="0.00" [(ngModel)]="price">
+            </div>
           </div>
           <div>
-            <label><strong>Categoría</strong></label><br>
-            <select class="selectCategory" id="selectCategory">
-              <option>Arte</option>
-              <option>Joyería</option>
-              <option>Textilería</option>
-              <option>Accesorios</option>
-              <option>Hogar</option>
+            <label for="inputCategory" class="form-label"><strong>Categoría</strong></label><br>
+            <select [(ngModel)]="categoryId" name="category" class="form-select selectCategory" id="inputCategory">
+              <option value="0"  disabled selected>Seleccione una categoría</option>
+              <option *ngFor="let categoryItem of categories" [value]="categoryItem.categoryId"> {{ categoryItem.name }}</option>
             </select>
           </div>
-        </span>
+        </div>
 
-        <label><strong>Descripción</strong></label><br>
-        <textarea class="inputDescription" placeholder="..."></textarea>
+        <label for="inputDescription"><strong>Descripción</strong></label><br>
+        <textarea class="form-control inputDescription" id="inputDescription" name="description" placeholder="..." [(ngModel)]="description"></textarea>
       </div>
     </div>
     <div class="buttonDiv">
-      <button class="buttonForm" type="submit">Publicar</button>
+      <button class="buttonForm" type="button" (click)="crearProducto()">Publicar</button>
     </div>
 
   </form>
