@@ -27,6 +27,12 @@ export class ProductServiceService {
       .pipe(catchError(this.errors));
   }
 
+  public findAllProducts():Observable<Product[]>{
+    return this._http
+      .get<Product[]>(environmentLocal.API_URL + this.endpoint + '/findAllProducts')
+      .pipe(catchError(this.errors));
+  }
+
   private errors(error: HttpErrorResponse) {
 
     console.log(error);

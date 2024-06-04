@@ -2,238 +2,35 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 <div class="container-fluid font-josefin">
+  <h3 class="hCatalog" style="text-align: center"><strong>CATÁLOGO DE PRODUCTOS</strong>   </h3>
+  <h6 class="hCatalog" style="text-align: center">¡Explora nuestro catálogo de artesanías únicas!</h6>
   <div class="mainCatalog">
-    <h3 class="hCatalog"><strong>CATÁLOGO DE PRODUCTOS</strong>   </h3>
-    <h6 class="hCatalog">¡Explora nuestro catálogo de artesanías únicas!</h6>
-    <span class="spanSearch">
-      <div>
-        <label class="labelCatalog">Categoría</label><br>
-        <select class="selectCatalog">
-          <option>Arte</option>
-          <option>Joyería</option>
-          <option>Textilería</option>
-          <option>Hogar</option>
-          <option>Accesorios</option>
-        </select>
-      </div>
-      <div>
-        <label>Departamento</label><br>
-        <select class="selectCatalog">
-          <option>...</option>
-        </select>
-      </div>
-      <div>
-        <label>Provincia</label><br>
-        <select class="selectCatalog">
-          <option>...</option>
-        </select>
-      </div>
-      <div>
-        <label>Distrito</label><br>
-        <select class="selectCatalog">
-          <option>...</option>
-        </select>
-      </div>
-    </span>
+      <div>Filtrar por Categoría</div>
+      <select [(ngModel)]="categoryId" name="category"  id="inputCategory" class="selectCatalog" (change)="findProductByCategory()">
+        <option [value]="0">Seleccione una opción</option>
+        <option *ngFor="let category of categories" [value]="category.categoryId">{{category.name}}</option>
+      </select>
   </div>
-  <div class="productsList">
-    <div class="col-md-3">
+
+  <div class="productsList" *ngFor="let row of rows">
+    <div class="col-md-3" *ngFor="let product of row">
       <div class="card colorCard" style="width: 18rem;">
         <img src="../../../../../assets/Img/img6.png" class="card-img-top imgProduct" alt="imagen card">
         <div class="card-body textCard">
           <span class="spanProduct">
             <div class="col-md-8">
-              <h5><strong>Título</strong></h5>
+              <h5><strong>{{product.name}}</strong></h5>
             </div>
             <div class="col-md-4 productHeart">
                 <img class="imgHeart" src="../../../../../assets/Img/corazon-circular.png" alt="Heart Icon">
               </div>
           </span>
-          <p class="card-text">S/00.00</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card colorCard" style="width: 18rem;">
-        <img src="../../../../../assets/Img/img6.png" class="card-img-top imgProduct" alt="imagen card">
-        <div class="card-body textCard">
-          <span class="spanProduct">
-            <div class="col-md-8">
-              <h5><strong>Título</strong></h5>
-            </div>
-            <div class="col-md-4 productHeart">
-                <img class="imgHeart" src="../../../../../assets/Img/corazon-circular.png" alt="Heart Icon">
-              </div>
-          </span>
-          <p class="card-text">S/00.00</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card colorCard" style="width: 18rem;">
-        <img src="../../../../../assets/Img/img6.png" class="card-img-top imgProduct">
-        <div class="card-body textCard">
-          <span class="spanProduct">
-            <div class="col-md-8">
-              <h5><strong>Título</strong></h5>
-            </div>
-            <div class="col-md-4 productHeart">
-                <img class="imgHeart" src="../../../../../assets/Img/corazon-circular.png" alt="Heart Icon">
-              </div>
-          </span>
-          <p class="card-text">S/00.00</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card colorCard" style="width: 18rem;">
-        <img src="../../../../../assets/Img/img6.png" class="card-img-top imgProduct">
-        <div class="card-body textCard">
-          <span class="spanProduct">
-            <div class="col-md-8">
-              <h5><strong>Título</strong></h5>
-            </div>
-            <div class="col-md-4 productHeart">
-                <img class="imgHeart" src="../../../../../assets/Img/corazon-circular.png" alt="Heart Icon">
-              </div>
-          </span>
-          <p class="card-text">S/00.00</p>
+          <p class="card-text">S/{{product.price}}</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="productsList">
-    <div class="col-md-3">
-      <div class="card colorCard" style="width: 18rem;">
-        <img src="../../../../../assets/Img/img6.png" class="card-img-top imgProduct">
-        <div class="card-body textCard">
-          <span class="spanProduct">
-            <div class="col-md-8">
-              <h5><strong>Título</strong></h5>
-            </div>
-            <div class="col-md-4 productHeart">
-                <img class="imgHeart" src="../../../../../assets/Img/corazon-circular.png" alt="Heart Icon">
-              </div>
-          </span>
-          <p class="card-text">S/00.00</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card colorCard" style="width: 18rem;">
-        <img src="../../../../../assets/Img/img6.png" class="card-img-top imgProduct">
-        <div class="card-body textCard">
-          <span class="spanProduct">
-            <div class="col-md-8">
-              <h5><strong>Título</strong></h5>
-            </div>
-            <div class="col-md-4 productHeart">
-                <img class="imgHeart" src="../../../../../assets/Img/corazon-circular.png" alt="Heart Icon">
-              </div>
-          </span>
-          <p class="card-text">S/00.00</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card colorCard" style="width: 18rem;">
-        <img src="../../../../../assets/Img/img6.png" class="card-img-top imgProduct">
-        <div class="card-body textCard">
-          <span class="spanProduct">
-            <div class="col-md-8">
-              <h5><strong>Título</strong></h5>
-            </div>
-            <div class="col-md-4 productHeart">
-                <img class="imgHeart" src="../../../../../assets/Img/corazon-circular.png" alt="Heart Icon">
-              </div>
-          </span>
-          <p class="card-text">S/00.00</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card colorCard" style="width: 18rem;">
-        <img src="../../../../../assets/Img/img6.png" class="card-img-top imgProduct">
-        <div class="card-body textCard">
-          <span class="spanProduct">
-            <div class="col-md-8">
-              <h5><strong>Título</strong></h5>
-            </div>
-            <div class="col-md-4 productHeart">
-                <img id="icon" class="imgHeart" src="../../../../../assets/Img/corazon-circular.png" alt="Heart Icon">
-              </div>
-          </span>
-          <p class="card-text">S/00.00</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="productsList">
-    <div class="col-md-3">
-      <div class="card colorCard" style="width: 18rem;">
-        <img src="../../../../../assets/Img/img6.png" class="card-img-top imgProduct">
-        <div class="card-body textCard">
-          <span class="spanProduct">
-            <div class="col-md-8">
-              <h5><strong>Título</strong></h5>
-            </div>
-            <div class="col-md-4 productHeart">
-                <img class="imgHeart" src="../../../../../assets/Img/corazon-circular.png" alt="Heart Icon">
-              </div>
-          </span>
-          <p class="card-text">S/00.00</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card colorCard" style="width: 18rem;">
-        <img src="../../../../../assets/Img/img6.png" class="card-img-top imgProduct">
-        <div class="card-body textCard">
-          <span class="spanProduct">
-            <div class="col-md-8">
-              <h5><strong>Título</strong></h5>
-            </div>
-            <div class="col-md-4 productHeart">
-                <img class="imgHeart" src="../../../../../assets/Img/corazon-circular.png" alt="Heart Icon">
-              </div>
-          </span>
-          <p class="card-text">S/00.00</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card colorCard" style="width: 18rem;">
-        <img src="../../../../../assets/Img/img6.png" class="card-img-top imgProduct">
-        <div class="card-body textCard">
-          <span class="spanProduct">
-            <div class="col-md-8">
-              <h5><strong>Título</strong></h5>
-            </div>
-            <div class="col-md-4 productHeart">
-                <img class="imgHeart" src="../../../../../assets/Img/corazon-circular.png" alt="Heart Icon">
-              </div>
-          </span>
-          <p class="card-text">S/00.00</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card colorCard" style="width: 18rem;">
-        <img src="../../../../../assets/Img/img6.png" class="card-img-top imgProduct">
-        <div class="card-body textCard">
-          <span class="spanProduct">
-            <div class="col-md-8">
-              <h5><strong>Título</strong></h5>
-            </div>
-            <div class="col-md-4 productHeart">
-                <img class="imgHeart" src="../../../../../assets/Img/corazon-circular.png" alt="Heart Icon">
-              </div>
-          </span>
-          <p class="card-text">S/00.00</p>
-        </div>
-      </div>
-    </div>
-  </div>
+
   <div class="listPagination">
     <nav aria-label="Page navigation example">
       <ul class="pagination">
