@@ -6,6 +6,7 @@ import {Observable} from "rxjs";
 import {Category} from "../../../../model/entity/Category";
 import {CategoryServiceService} from "../../../../service/CategoryService.service";
 import {NgForOf} from "@angular/common";
+import {User} from "../../../../model/entity/User";
 
 @Component({
   selector: 'app-publish-products',
@@ -37,7 +38,7 @@ export class PublishProductsComponent implements OnInit{
     this.image = '';
     this.price = 0;
     this.categoryId = 0;
-    this.userId = 2;
+    this.userId = 0;
     this.categories = [];
   }
 
@@ -48,12 +49,19 @@ export class PublishProductsComponent implements OnInit{
   public crearProducto():void{
 
     let product: Product = new Product();
+    let userLogin = sessionStorage.getItem("userLogin");
+    let userLoginParse;
+    let userNew : User = new User();
+    if (userLogin){
+      userLoginParse = JSON.parse(userLogin);
+      userNew.userId = userLoginParse.userId;
+    }
 
     product.name = this.name;
     product.description = this.description;
     product.image = this.image;
     product.price = this.price;
-    product.userId = this.userId;
+    product.userId = userNew.userId;
     this._productService
       .createProduct(product, this.categoryId, this.userId)
       .subscribe({

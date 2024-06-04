@@ -34,12 +34,14 @@ select{
   padding-right: 10px;
 }
 .productsList{
-  display: flex;
+  display: grid;
   text-align: center;
   padding-top: 20px;
   margin-left: 5%;
   margin-right: 5%;
-  justify-content: space-between;
+  justify-content: center;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
 }
 .imgProduct{
   height: 250px;
@@ -81,6 +83,7 @@ select{
 }
 .colorCard{
   background: #F7EFEF;
+  margin-bottom: 20px;
 }
 
 .listPagination{
@@ -101,4 +104,10 @@ select{
 .font-josefin{
   font-family: "Josefin Slab", serif;
   font-weight: bolder;
+}
+
+@media (min-width: 768px) {
+  .col-md-3 {
+    width: auto !important;
+  }
 }

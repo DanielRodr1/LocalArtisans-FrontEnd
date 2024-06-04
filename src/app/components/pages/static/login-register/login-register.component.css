@@ -39,22 +39,22 @@ div.d-flex{
 
 /*LOGIN ESTILOS*/
 
-form.form-login{
+div.form-login{
   width: 400px;
 }
 
-form.form-login label{
+div.form-login label{
   margin-top: 5px;
   font-weight: bolder;
 }
 
-form.form-login input{
+div.form-login input{
   border-color: black;
   margin-bottom: 20px;
   margin-top: 5px;
 }
 
-form.form-login button.btn{
+div.form-login button.btn{
   background-color: #B8885B;
   border-color: black;
   width: 400px;

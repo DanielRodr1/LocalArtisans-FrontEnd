@@ -53,6 +53,15 @@ export class UserServiceService {
       .pipe(catchError(this.errors));
   }
 
+  public findByEmail(email: string): Observable<User>{
+    console.log(email);
+    return this._http
+      .get<User>(
+        environmentLocal.API_URL + this.endpoint + `/findUser/${email}`
+      )
+      .pipe(catchError(this.errors));
+  }
+
   public deleteUser(userId: number): Observable<Object>{
     return this._http
       .delete( environmentLocal.API_URL + this.endpoint + '/delete/' + userId)

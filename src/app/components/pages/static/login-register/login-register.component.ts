@@ -3,6 +3,8 @@ import {NgIf} from "@angular/common";
 import {UserServiceService} from "../../../../service/UserService.service";
 import {User} from "../../../../model/entity/User";
 import {FormsModule} from "@angular/forms";
+import {AuthServiceService} from "../../../../service/AuthService.service";
+import {LoginResponse} from "../../../../model/views/LoginResponse";
 
 @Component({
   selector: 'app-login-register',
@@ -29,8 +31,11 @@ export class LoginRegisterComponent implements OnInit{
   public passwordValidation: string;
   public codigoArtesano: string;
 
+  public emailLogin:string;
+  public passwordLogin:string;
 
-  public constructor(private _userService: UserServiceService) {
+
+  public constructor(private _userService: UserServiceService, private _authService: AuthServiceService) {
     this.codigo = false;
     this.users = [];
     this.userId = 0;
@@ -43,6 +48,8 @@ export class LoginRegisterComponent implements OnInit{
     this.profileImage = '';
     this.password = '';
     this.passwordValidation = '';
+    this.emailLogin = '';
+    this.passwordLogin = '';
   }
 
   public ngOnInit(){}
@@ -86,6 +93,38 @@ export class LoginRegisterComponent implements OnInit{
 
   }
 
+  public login(){
+
+    let loginResponse: LoginResponse = new LoginResponse(this.emailLogin, this.passwordLogin);
+
+    this._authService
+      .login(loginResponse)
+      .subscribe( {
+        next: (loginResponse : LoginResponse): void =>{
+          this.findByEmail(loginResponse.email);
+        },
+        error: (error): void =>{
+          alert(error.message);
+        }
+      });
+  }
+
+  private findByEmail(email: string){
+    this._userService
+      .findByEmail(email)
+      .subscribe( {
+        next: (user : User): void =>{
+          this.resetFormLogin();
+          sessionStorage.setItem("userLogin", user.toString());
+          window.location.reload();
+        },
+        error: (error): void =>{
+          alert(error.message);
+        }
+      });
+  }
+
+
   private resetForm(): void {
     this.fullName = '';
     this.email = '';
@@ -96,6 +135,11 @@ export class LoginRegisterComponent implements OnInit{
     this.userType = '';
     this.phone = '';
     this.passwordValidation = '';
+  }
+
+  private resetFormLogin(): void {
+    this.emailLogin = '';
+    this.passwordLogin = '';
   }
 
 }

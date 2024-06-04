@@ -21,17 +21,17 @@
 
       <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab" tabindex="0">
         <div class="d-flex align-items-center">
-          <form class="form-login">
+          <div class="form-login">
             <div class="col">
               <label for="emailLogin" class="form-label">Correo</label>
-              <input type="email" class="form-control" id="emailLogin" placeholder="Correo" required>
+              <input type="email" class="form-control" id="emailLogin" placeholder="Correo" required [(ngModel)]="emailLogin" >
             </div>
             <div class="col">
               <label for="passwordLogin" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="passwordLogin" placeholder="Contraseña" required>
+              <input type="password" class="form-control" id="passwordLogin" placeholder="Contraseña" required [(ngModel)]="passwordLogin">
             </div>
-            <button class="btn btn-login" type="submit">Iniciar Sesion</button>
-          </form>
+            <button class="btn btn-login" type="button" (click)="login()">Iniciar Sesion</button>
+          </div>
         </div>
       </div>
 
