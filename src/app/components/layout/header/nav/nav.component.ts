@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgIf, NgOptimizedImage} from "@angular/common";
 import {User} from "../../../../model/entity/User";
+import {AuthServiceService} from "../../../../service/AuthService.service";
 
 @Component({
   selector: 'app-nav',
@@ -16,7 +17,7 @@ export class NavComponent implements OnInit{
   public isLogged : boolean;
   public user: User;
 
-  constructor() {
+  constructor(private _authService: AuthServiceService) {
     this.isLogged = false;
     this.user = new User();
   }
@@ -37,6 +38,10 @@ export class NavComponent implements OnInit{
 
 //   Crear método públic logout para que se acceda por un botón y que ese botón sea condicianado
 //   cuando se haga click que llame al método logout y logout debe hacer un session remove con la key
+  public logout(){
+      this._authService.logout();
+      window.location.reload();
+  }
 
 
 }

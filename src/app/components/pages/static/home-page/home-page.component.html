@@ -3,75 +3,21 @@
   <h2>Categorías</h2>
   <div id="carouselExampleAutoplayingCategory" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleAutoplayingCategory" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleAutoplayingCategory" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button *ngFor="let slide of slides; let i = index"
+              type="button" data-bs-target="#carouselExampleAutoplayingCategory"
+              [attr.data-bs-slide-to]="i"
+              [class.active]="i === 0"
+              [attr.aria-current]="i === 0 ? 'true' : null"
+              [attr.aria-label]="'Slide ' + (i + 1)">
+      </button>
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item active">
+      <div *ngFor="let slide of slides; let i = index" class="carousel-item" [class.active]="i === 0">
         <div class="card-group">
-          <div class="card" style="max-width: 150px">
-            <img src="./assets/Category/Category1.png" class="card-img-top rounded-circle" alt="Image1">
+          <div class="card" *ngFor="let category of slide" style="max-width: 150px">
+            <img src="./assets/Category/Category1.png" class="card-img-top rounded-circle" [alt]="category.name">
             <div class="card-body">
-              <h5 class="card-title">Categoría 1</h5>
-            </div>
-          </div>
-          <div class="card" style="max-width: 150px">
-            <img src="./assets/Category/Category1.png" class="card-img-top rounded-circle" alt="Image1">
-            <div class="card-body">
-              <h5 class="card-title">Categoría 2</h5>
-            </div>
-          </div>
-          <div class="card" style="max-width: 150px">
-            <img src="./assets/Category/Category1.png" class="card-img-top rounded-circle" alt="Image1">
-            <div class="card-body">
-              <h5 class="card-title">Categoría 3</h5>
-            </div>
-          </div>
-          <div class="card" style="max-width: 150px">
-            <img src="./assets/Category/Category1.png" class="card-img-top rounded-circle" alt="Image1">
-            <div class="card-body">
-              <h5 class="card-title">Categoría 4</h5>
-            </div>
-          </div>
-          <div class="card" style="max-width: 150px">
-            <img src="./assets/Category/Category1.png" class="card-img-top rounded-circle" alt="Image1">
-            <div class="card-body">
-              <h5 class="card-title">Categoría 5</h5>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="carousel-item">
-        <div class="card-group">
-          <div class="card" style="max-width: 150px">
-            <img src="./assets/Category/Category1.png" class="card-img-top rounded-circle" alt="Image1">
-            <div class="card-body">
-              <h5 class="card-title">Categoría 1</h5>
-            </div>
-          </div>
-          <div class="card" style="max-width: 150px">
-            <img src="./assets/Category/Category1.png" class="card-img-top rounded-circle" alt="Image1">
-            <div class="card-body">
-              <h5 class="card-title">Categoría 2</h5>
-            </div>
-          </div>
-          <div class="card" style="max-width: 150px">
-            <img src="./assets/Category/Category1.png" class="card-img-top rounded-circle" alt="Image1">
-            <div class="card-body">
-              <h5 class="card-title">Categoría 3</h5>
-            </div>
-          </div>
-          <div class="card" style="max-width: 150px">
-            <img src="./assets/Category/Category1.png" class="card-img-top rounded-circle" alt="Image1">
-            <div class="card-body">
-              <h5 class="card-title">Categoría 4</h5>
-            </div>
-          </div>
-          <div class="card" style="max-width: 150px">
-            <img src="./assets/Category/Category1.png" class="card-img-top rounded-circle" alt="Image1">
-            <div class="card-body">
-              <h5 class="card-title">Categoría 5</h5>
+              <h5 class="card-title">{{ category.name }}</h5>
             </div>
           </div>
         </div>

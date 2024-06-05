@@ -27,6 +27,11 @@ export class AuthServiceService {
       .pipe(catchError(this.errors));
   }
 
+  public logout(){
+    sessionStorage.removeItem('userLogin');
+    console.log("Usuario desdlogeado");
+  }
+
   private errors(error: HttpErrorResponse){
 
     let message = error.message;
