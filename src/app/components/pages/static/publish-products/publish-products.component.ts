@@ -44,24 +44,38 @@ export class PublishProductsComponent implements OnInit{
 
   public ngOnInit() {
     this.getAllCategories();
+    this.setUserIdFromSession();
+  }
+
+  private setUserIdFromSession() {
+    let userLogin = sessionStorage.getItem("userLogin");
+    if (userLogin) {
+      try {
+        let userLoginParse = JSON.parse(userLogin);
+        this.userId = userLoginParse.userId;
+      } catch (error) {
+        console.error("Error al analizar el JSON de userLogin:", error);
+      }
+    }
   }
 
   public crearProducto():void{
 
     let product: Product = new Product();
-    let userLogin = sessionStorage.getItem("userLogin");
-    let userLoginParse;
-    let userNew : User = new User();
-    if (userLogin){
-      userLoginParse = JSON.parse(userLogin);
-      userNew.userId = userLoginParse.userId;
-    }
+    // let userLogin = sessionStorage.getItem("userLogin");
+    // let userLoginParse;
+    // let userNew : User = new User();
+    // if (userLogin){
+    //   userLoginParse = JSON.parse(userLogin);
+    //   userNew.userId = userLoginParse.userId;
+    // }
 
     product.name = this.name;
     product.description = this.description;
     product.image = this.image;
     product.price = this.price;
-    product.userId = userNew.userId;
+    // product.userId = userNew.userId;
+    product.userId = this.userId;
     this._productService
       .createProduct(product, this.categoryId, this.userId)
       .subscribe({

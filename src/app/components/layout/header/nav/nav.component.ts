@@ -41,9 +41,10 @@ export class NavComponent implements OnInit{
 
   private verifyLogin() {
     let userLogin = sessionStorage.getItem("userLogin");
+    let userLoginParse;
     if (userLogin) {
       try {
-        let userLoginParse = JSON.parse(userLogin);
+        userLoginParse = JSON.parse(userLogin);
         if (userLoginParse && userLoginParse.userType) {
           this.user.userType = userLoginParse.userType;
           console.log(this.user.userType);
