@@ -2,13 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {NgIf, NgOptimizedImage} from "@angular/common";
 import {User} from "../../../../model/entity/User";
 import {AuthServiceService} from "../../../../service/AuthService.service";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-nav',
   standalone: true,
   imports: [
     NgOptimizedImage,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
@@ -26,21 +28,36 @@ export class NavComponent implements OnInit{
     this.verifyLogin();
   }
 
-  private verifyLogin(){
+  // private verifyLogin(){
+  //   let userLogin = sessionStorage.getItem("userLogin");
+  //   // let userLoginParse;
+  //   if (userLogin){
+  //     this.isLogged=true;
+  //     let userLoginParse = JSON.parse(userLogin);
+  //     this.user.userType = userLoginParse.userType;
+  //     console.log(this.user.userType);
+  //   }
+  // }
+
+  private verifyLogin() {
     let userLogin = sessionStorage.getItem("userLogin");
-    let userLoginParse;
-    if (userLogin){
-      this.isLogged=true;
-      userLoginParse = JSON.parse(userLogin);
-      this.user.fullName = userLoginParse.fullName;
+    if (userLogin) {
+      try {
+        let userLoginParse = JSON.parse(userLogin);
+        if (userLoginParse && userLoginParse.userType) {
+          this.user.userType = userLoginParse.userType;
+          console.log(this.user.userType);
+        }
+      } catch (error) {
+        console.error("Error al analizar el JSON de userLogin:", error);
+      }
+      this.isLogged = true;
     }
   }
 
-//   Crear método públic logout para que se acceda por un botón y que ese botón sea condicianado
-//   cuando se haga click que llame al método logout y logout debe hacer un session remove con la key
+
   public logout(){
       this._authService.logout();
-      window.location.reload();
   }
 
 

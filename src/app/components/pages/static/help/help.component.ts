@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 
 @Component({
   selector: 'app-help',
@@ -7,15 +7,18 @@ import { Component } from '@angular/core';
   templateUrl: './help.component.html',
   styleUrl: './help.component.css'
 })
-export class HelpComponent {
-}
-document.addEventListener('DOMContentLoaded', () => {
-  const faqHeaders = document.querySelectorAll('.faq .head');
+export class HelpComponent implements AfterViewInit {
 
-  faqHeaders.forEach(header => {
-    header.addEventListener('click', () => {
-      const faq = header.parentElement as HTMLElement;
-      faq.classList.toggle('active');
+  constructor() { }
+
+  ngAfterViewInit(): void {
+    const faqHeaders = document.querySelectorAll('.faq .head');
+
+    faqHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const faq = header.parentElement as HTMLElement;
+        faq.classList.toggle('active');
+      });
     });
-  });
-});
+  }
+}

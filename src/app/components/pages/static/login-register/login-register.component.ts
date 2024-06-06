@@ -3,8 +3,9 @@ import {NgIf} from "@angular/common";
 import {UserServiceService} from "../../../../service/UserService.service";
 import {User} from "../../../../model/entity/User";
 import {FormsModule} from "@angular/forms";
-import {AuthServiceService} from "../../../../service/AuthService.service";
 import {LoginResponse} from "../../../../model/views/LoginResponse";
+import {AuthServiceService} from "../../../../service/AuthService.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-register',
@@ -35,7 +36,7 @@ export class LoginRegisterComponent implements OnInit{
   public passwordLogin:string;
 
 
-  public constructor(private _userService: UserServiceService, private _authService: AuthServiceService) {
+  public constructor(private _userService: UserServiceService, private _authService: AuthServiceService, private router: Router) {
     this.codigo = false;
     this.users = [];
     this.userId = 0;
@@ -102,6 +103,7 @@ export class LoginRegisterComponent implements OnInit{
       .subscribe( {
         next: (loginResponse : LoginResponse): void =>{
           this.findByEmail(loginResponse.email);
+          this.router.navigateByUrl('/home-page');
         },
         error: (error): void =>{
           alert(error.message);
@@ -115,7 +117,8 @@ export class LoginRegisterComponent implements OnInit{
       .subscribe( {
         next: (user : User): void =>{
           this.resetFormLogin();
-          sessionStorage.setItem("userLogin", user.toString());
+          // sessionStorage.setItem("userLogin", user.toString());
+          sessionStorage.setItem("userLogin", JSON.stringify(user));
           window.location.reload();
         },
         error: (error): void =>{

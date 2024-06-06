@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Product} from "../model/entity/Product";
 import {catchError, Observable, throwError} from "rxjs";
-import {environmentLocal} from "../environments/environment.local";
+import {environmentLocalMicro} from "../environments/environment.local.micro";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class ProductServiceService {
 
     return this._http
       .post<Product>(
-        environmentLocal.API_URL + this.endpoint + `/create/${categoryId}/${userId}`, // Url
+        environmentLocalMicro.API_URL + this.endpoint + `/create/${categoryId}/${userId}`, // Url
         product.toJSON(), // Body
         { headers: headers } // Cabeceras HTTP
       )
@@ -29,7 +29,7 @@ export class ProductServiceService {
 
   public findAllProducts():Observable<Product[]>{
     return this._http
-      .get<Product[]>(environmentLocal.API_URL + this.endpoint + '/findAllProducts')
+      .get<Product[]>(environmentLocalMicro.API_URL + this.endpoint + '/findAllProducts')
       .pipe(catchError(this.errors));
   }
 
