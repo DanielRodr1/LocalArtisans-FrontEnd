@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  width: 2000px;
+
+}
+
+body {
+  font-family: 'Josefin Slab', serif;
+  font-weight: bold;
+}
+
+.side-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+}
+
+.side-content div {
+  flex: 1;
+  margin: 12px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spaced-body {
+  margin-bottom: 20px;}
+
+.card-body {
+  margin-top: 10px;
+  border: #ff0000;
+  text-align: left;
+}
+.card {
+  margin-bottom: 20px; /* Añade un espacio entre las tarjetas */
+}
+#contenedor-imagen {
+  float: left;
+  margin-right: 20px;
+}
+
+#imagen {
+  width: 800px; /* Ancho deseado */
+  height: 600px; /* Alto deseado */
+  border: 10px;
+}
+
+.btn-primary {
+  background-color: #d4b79b;
+  border-color: #d4b79b; /* Cambia el color del borde aquí */
+
+  color: black; /* Cambia el color del texto a negro */
+  font-weight: bold; /* Establece el texto en negrita */
+  }
+
+.container-left{
+  margin-top: 40px;
+}
+
+.fa-arrow-left, a{
+  color: black; /* Cambia el color del texto a negro */
+  font-weight: bold; /* Establece el texto en negrita */
+
+}
