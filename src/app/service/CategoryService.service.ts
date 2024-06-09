@@ -10,7 +10,7 @@ import {environmentLocalMicro} from "../environments/environment.local.micro";
 })
 export class CategoryServiceService {
 
-  private readonly endpoint : string = "/api/v1/category"
+  private readonly endpoint : string = "/category"
 
   constructor(private _http: HttpClient) { }
 
