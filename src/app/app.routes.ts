@@ -22,6 +22,11 @@ export const routes: Routes = [
       import('./components/pages/static/help/help.component').then((c) => c.HelpComponent),
   },
   {
+    path: 'publication/:productId',
+    loadComponent: () =>
+      import('./components/pages/dynamic/publication/publication.component').then((c) => c.PublicationComponent)
+  },
+  {
     path: 'list-product',
     loadComponent: () =>
       import('./components/pages/dynamic/list-products/list-products.component').then((c) => c.ListProductsComponent),

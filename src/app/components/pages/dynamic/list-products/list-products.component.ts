@@ -6,13 +6,15 @@ import {CategoryServiceService} from "../../../../service/CategoryService.servic
 import {Observable} from "rxjs";
 import {NgForOf} from "@angular/common";
 import {ProductServiceService} from "../../../../service/ProductService.service";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-list-products',
   standalone: true,
   imports: [
     FormsModule,
-    NgForOf
+    NgForOf,
+    RouterLink
   ],
   templateUrl: './list-products.component.html',
   styleUrl: './list-products.component.css'

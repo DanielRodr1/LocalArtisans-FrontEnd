@@ -22,7 +22,7 @@ export class UserServiceService {
   }
 
   public getUserById(userId: number): Observable<User>{
-    return this._http.get<User>(environmentLocal.API_URL + this.endpoint + '/find/');
+    return this._http.get<User>(environmentLocal.API_URL + this.endpoint + `/find/${userId}`);
   }
 
   public createUser(user: User): Observable<User>{

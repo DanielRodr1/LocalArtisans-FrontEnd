@@ -33,6 +33,12 @@ export class ProductServiceService {
       .pipe(catchError(this.errors));
   }
 
+  public findById(productId: number):Observable<Product>{
+    return this._http
+      .get<Product>(environmentLocalMicro.API_URL + this.endpoint + `/${productId}`)
+      .pipe(catchError(this.errors));
+  }
+
   private errors(error: HttpErrorResponse) {
 
     console.log(error);
