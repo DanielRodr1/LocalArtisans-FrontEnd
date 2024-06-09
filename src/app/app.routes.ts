@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import {AdminComponent} from "./components/pages/dynamic/admin/admin.component";
 
 export const routes: Routes = [
   {
@@ -30,5 +31,10 @@ export const routes: Routes = [
     path: 'publish-product',
     loadComponent: () =>
       import('./components/pages/static/publish-products/publish-products.component').then((c) => c.PublishProductsComponent),
+  },
+  {
+    path: 'admin',
+    loadComponent: () =>
+      import('./components/pages/dynamic/admin/admin.component').then((c) => c.AdminComponent),
   }
 ];
