@@ -30,7 +30,7 @@ export class LoginRegisterComponent implements OnInit{
   public profileImage:string;
   public password:string;
   public passwordValidation: string;
-  public codigoArtesano: string;
+  public artisanCode: string;
 
   public emailLogin:string;
   public passwordLogin:string;
@@ -44,7 +44,7 @@ export class LoginRegisterComponent implements OnInit{
     this.dni = '';
     this.email = '';
     this.phone = '';
-    this.codigoArtesano = '';
+    this.artisanCode = '';
     this.userType = '';
     this.profileImage = '';
     this.password = '';
@@ -76,7 +76,7 @@ export class LoginRegisterComponent implements OnInit{
     user.fullName = this.fullName;
     user.profileImage = this.profileImage;
     user.dni = this.dni;
-    user.codigoArtesano = this.codigoArtesano;
+    user.artisanCode = this.artisanCode;
     user.userType = this.userType;
     user.phone = this.phone;
 
@@ -134,7 +134,7 @@ export class LoginRegisterComponent implements OnInit{
     this.password = '';
     this.profileImage = '';
     this.dni = '';
-    this.codigoArtesano = '';
+    this.artisanCode = '';
     this.userType = '';
     this.phone = '';
     this.passwordValidation = '';

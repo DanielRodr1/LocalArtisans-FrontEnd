@@ -9,7 +9,7 @@ import {environmentLocalMicro} from "../environments/environment.local.micro";
 })
 export class ProductServiceService {
 
-  private readonly endpoint: string = "/api/v1/product"
+  private readonly endpoint: string = "/product"
 
   constructor(private _http: HttpClient) { }
 

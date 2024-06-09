@@ -1,4 +1,5 @@
 export interface IUser{
+
   userId:number;
   fullName:string;
   dni: string;
@@ -8,4 +9,5 @@ export interface IUser{
   userType: string;
   profileImage: string;
   password: string;
+
 }

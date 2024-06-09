@@ -28,7 +28,6 @@ export class User implements IUser{
 
   // Getters & Setters
 
-
   get artisanCode(): string {
     return this._artisanCode;
   }

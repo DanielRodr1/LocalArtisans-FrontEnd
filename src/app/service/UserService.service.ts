@@ -9,20 +9,19 @@ import {environmentLocal} from "../environments/environment.local";
 })
 export class UserServiceService {
 
-  //Atributos
+  // Attributes
+  private readonly endpoint: string = "/user"
 
-  private readonly endpoint: string = "/api/v1/artesanos"
-
-  //Constructor
+  // Constructor with HttpClient
   constructor(private _http: HttpClient) { }
 
-  //Métodos
+  // Methods
   public getAllUsers(): Observable<User[]>{
-    return this._http.get<User[]>(environmentLocal.API_URL + this.endpoint + '/findAll');
+    return this._http.get<User[]>(environmentLocal.API_URL + this.endpoint + '/all');
   }
 
   public getUserById(userId: number): Observable<User>{
-    return this._http.get<User>(environmentLocal.API_URL + this.endpoint + '/find/');
+    return this._http.get<User>(environmentLocal.API_URL + this.endpoint + '/one/' + userId);
   }
 
   public createUser(user: User): Observable<User>{
@@ -32,7 +31,7 @@ export class UserServiceService {
 
     return this._http
       .post<User>(
-        environmentLocal.API_URL + this.endpoint + '/save',
+        environmentLocal.API_URL + this.endpoint + '/create',
         user.toJSON(),
         {headers: headers}
       )
@@ -46,7 +45,7 @@ export class UserServiceService {
 
     return this._http
       .put<User>(
-        environmentLocal.API_URL + this.endpoint + '/save',
+        environmentLocal.API_URL + this.endpoint + '/update',
         user.toJSON(),
         {headers: headers}
       )
@@ -57,10 +56,11 @@ export class UserServiceService {
     console.log(email);
     return this._http
       .get<User>(
-        environmentLocal.API_URL + this.endpoint + `/findUser/${email}`
+        environmentLocal.API_URL + this.endpoint + `/one/email/${email}`
       )
       .pipe(catchError(this.errors));
   }
+
 
   public deleteUser(userId: number): Observable<Object>{
     return this._http

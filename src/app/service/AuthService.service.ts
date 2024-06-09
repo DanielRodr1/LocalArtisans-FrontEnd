@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class AuthServiceService {
 
-  private readonly endpoint: string = "/api/v1/artesanos"
+  private readonly endpoint: string = "/user"
 
   constructor(private _http: HttpClient, private router: Router) { }
 
@@ -30,7 +30,7 @@ export class AuthServiceService {
 
   public logout(){
     sessionStorage.removeItem('userLogin');
-    console.log("Usuario desdlogeado");
+    console.log("Usuario deslogeado");
     this.router.navigateByUrl('/login')
   }
 
