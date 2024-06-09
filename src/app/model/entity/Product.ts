@@ -8,15 +8,18 @@ export class Product implements IProduct{
   private _description:string;
   private _image:string;
   private _price:number;
-  private _category:Category;
+  private _active:boolean;
   private _userId:number;
+  private _category:Category;
 
-  constructor(productId?: number, name?: string, description?: string, image?: string, price?: number, category?: Category, userId?: number) {
+  constructor(productId?: number, name?: string, description?: string, image?: string, price?: number,
+              active?: boolean, userId?: number, category?: Category) {
     this._productId = productId ? productId : 0;
     this._name = name ? name : '';
     this._description = description ? description : '';
     this._image = image ? image: '';
     this._price = price ? price : 0;
+    this._active = active ? active : true;
     this._category = category ?  category : new Category();
     this._userId = userId ? userId : 0;
   }
@@ -61,12 +64,12 @@ export class Product implements IProduct{
     this._price = value;
   }
 
-  get category(): Category {
-    return this._category;
+  get active(): boolean {
+    return this._active;
   }
 
-  set category(value: Category) {
-    this._category = value;
+  set active(value: boolean) {
+    this._active = value;
   }
 
   get userId(): number {
@@ -75,6 +78,14 @@ export class Product implements IProduct{
 
   set userId(value: number) {
     this._userId = value;
+  }
+
+  get category(): Category {
+    return this._category;
+  }
+
+  set category(value: Category) {
+    this._category = value;
   }
 
   public toString():string{
@@ -88,6 +99,7 @@ export class Product implements IProduct{
       description: this._description,
       image: this._image,
       price: this._price,
+      active:this._active,
       userId: this._userId,
       category: this._category
     }

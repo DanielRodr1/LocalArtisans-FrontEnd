@@ -2,7 +2,7 @@ import {IUser} from "../interface/IUser";
 
 export class User implements IUser{
 
-  //Atributos
+  // Attributes
   private _userId:number;
   private _fullName:string;
   private _dni:string;
@@ -11,16 +11,16 @@ export class User implements IUser{
   private _userType:string;
   private _profileImage:string;
   private _password:string;
-  private _codigoArtesano: string;
+  private _artisanCode: string;
 
-  //Constructor
-  constructor(userId?: number, fullName?: string, dni?: string, email?: string, phone?: string, codigoArtesano?: string, userType?: string, profileImage?: string, password?: string) {
+  // Constructor
+  constructor(userId?: number, fullName?: string, dni?: string, email?: string, phone?: string, artisanCode?: string, userType?: string, profileImage?: string, password?: string) {
     this._userId = userId ? userId : 0;
     this._fullName = fullName ? fullName: '';
     this._dni = dni ? dni : '';
     this._email = email ? email : '';
     this._phone = phone ? phone : '';
-    this._codigoArtesano = codigoArtesano ? codigoArtesano : '';
+    this._artisanCode = artisanCode ? artisanCode : '';
     this._userType = userType ? userType : '';
     this._profileImage = profileImage ? profileImage : '';
     this._password = password ? password : '';
@@ -29,12 +29,12 @@ export class User implements IUser{
   // Getters & Setters
 
 
-  get codigoArtesano(): string {
-    return this._codigoArtesano;
+  get artisanCode(): string {
+    return this._artisanCode;
   }
 
-  set codigoArtesano(value: string) {
-    this._codigoArtesano = value;
+  set artisanCode(value: string) {
+    this._artisanCode = value;
   }
 
   get userId(): number {
@@ -112,7 +112,7 @@ export class User implements IUser{
       dni: this._dni,
       email: this._email,
       phone: this._phone,
-      codigoArtesano: this._codigoArtesano,
+      artisanCode: this._artisanCode,
       userType: this._userType,
       profileImage: this._profileImage,
       password: this._password

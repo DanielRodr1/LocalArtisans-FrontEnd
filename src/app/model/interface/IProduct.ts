@@ -1,11 +1,15 @@
 import {Category} from "../entity/Category";
 
 export interface IProduct{
-  productId:number;
+
+  productId: number;
   name:string;
   description:string;
   image:string;
   price:number;
-  category:Category;
+  active:boolean;
   userId:number;
+  category:Category;
+
 }
+

@@ -4,7 +4,7 @@ export interface IUser{
   dni: string;
   email: string;
   phone: string;
-  codigoArtesano: string;
+  artisanCode: string;
   userType: string;
   profileImage: string;
   password: string;
