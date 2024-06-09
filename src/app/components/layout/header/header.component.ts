@@ -14,6 +14,7 @@ import {filter} from "rxjs";
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
+
 export class HeaderComponent implements OnInit{
   showCarousel: boolean;
 
