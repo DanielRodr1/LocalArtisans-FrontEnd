@@ -32,4 +32,4 @@ COPY --from=build /app/dist/local-artisans-front/browser .
 EXPOSE 3000
 
 # Comando de arranque
-CMD ["http-server", "-p", "8080", "-c-1"]
+CMD ["http-server", "-p", "3000", "-c-1"]
