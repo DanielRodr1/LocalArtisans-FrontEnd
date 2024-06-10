@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Construir la aplicación Angular
-RUN npm run build -- --configuration production --project local-artisans-front
+RUN npm run build -- --configuration production --project LocalArtisans-Front
 
 # Etapa 2: Servir la aplicación
 FROM node:18-alpine
@@ -29,7 +29,7 @@ WORKDIR /usr/src/app
 COPY --from=build /app/dist/local-artisans-front/browser .
 
 # Exponer el puerto
-EXPOSE 8080
+EXPOSE 3000
 
 # Comando de arranque
 CMD ["http-server", "-p", "8080", "-c-1"]
