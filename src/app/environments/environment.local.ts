@@ -1,5 +1,5 @@
 export const environmentLocal = {
 
-  API_URL: "http://localhost:8080"
+  API_URL: "ec2-34-226-211-80.compute-1.amazonaws.com:8080"
 
 }
