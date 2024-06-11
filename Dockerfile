@@ -29,7 +29,7 @@ WORKDIR /usr/src/app
 COPY --from=build /app/dist/local-artisans-front/browser .
 
 # Exponer el puerto
-EXPOSE 3000
+EXPOSE 80
 
 # Comando de arranque
-CMD ["http-server", "-p", "3000", "-c-1"]
+CMD ["http-server", "-p", "80", "-c-1"]
