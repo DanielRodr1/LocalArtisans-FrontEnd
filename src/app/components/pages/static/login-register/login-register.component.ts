@@ -103,7 +103,17 @@ export class LoginRegisterComponent implements OnInit{
       .subscribe( {
         next: (loginResponse : LoginResponse): void =>{
           this.findByEmail(loginResponse.email);
-          this.router.navigateByUrl('/home-page');
+          this.router.navigateByUrl('/home-page')
+            .then(success => {
+              if (success) {
+                console.log('Navigation is successful!');
+              } else {
+                console.log('Navigation has failed!');
+              }
+            })
+            .catch(err => {
+              console.error('Navigation error:', err);
+            });
         },
         error: (error): void =>{
           alert(error.message);
