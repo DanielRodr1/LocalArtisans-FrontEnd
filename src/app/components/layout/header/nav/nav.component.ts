@@ -26,6 +26,7 @@ export class NavComponent implements OnInit{
 
   public ngOnInit() {
     this.verifyLogin();
+    this.getProfile();
   }
 
   // private verifyLogin(){
@@ -56,9 +57,23 @@ export class NavComponent implements OnInit{
     }
   }
 
+  public getProfile(): string {
+    switch (this.user.userType) {
+      case 'admin':
+        return '/admin';
+      case 'vendedor':
+        return '/vendedor';
+      case 'cliente':
+        return '/cliente';
+      default:
+        return '/';
+    }
+  }
+
 
   public logout(){
       this._authService.logout();
+      this.isLogged=false;
   }
 
 

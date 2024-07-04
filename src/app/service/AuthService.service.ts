@@ -31,7 +31,7 @@ export class AuthServiceService {
   public logout(){
     sessionStorage.removeItem('userLogin');
     console.log("Usuario desdlogeado");
-    this.router.navigateByUrl('/login')
+    this.router.navigateByUrl('/home-page')
   }
 
   private errors(error: HttpErrorResponse) {
