@@ -34,7 +34,7 @@
   <div class="productsList">
     <div class="col-md-3" *ngFor="let product of products">
       <div class="card colorCard" style="width: 18rem;" [routerLink]="['/publication', product.productId]">
-        <img src="../../../../../assets/Img/img6.png" class="card-img-top imgProduct" alt="imagen card">
+        <img [src]="product.image" class="card-img-top imgProduct" alt="imagen card">
         <div class="card-body textCard">
           <span class="spanProduct">
             <div class="col-md-8">

@@ -54,7 +54,9 @@ select{
 }
 .imgProduct{
   cursor: pointer;
-
+  max-width: 100%; /* Ajusta la imagen al ancho máximo del card */
+  height: auto; /* Mantiene la proporción original de la imagen */
+  object-fit: cover;
 }
 .imgHeart{
   object-fit: cover;

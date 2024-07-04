@@ -10,7 +10,7 @@
         <label for="uploadImage" class="noStyleLabel">
           <img class="imgFile" src="./assets/Img/img5.png" alt="subir imagen">
         </label>
-        <input class="noStyleInput" type="file" id="uploadImage" accept="image/*">
+        <input class="noStyleInput" type="file" id="uploadImage" accept="image/*" (change)="onFileSelected($event)">
       </div>
       <div class="col-md-6">
         <label for="titleInput" class="form-label"><strong>Título</strong></label><br>

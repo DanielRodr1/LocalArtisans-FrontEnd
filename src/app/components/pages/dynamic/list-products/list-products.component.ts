@@ -4,7 +4,7 @@ import {Product} from "../../../../model/entity/Product";
 import {FormsModule} from "@angular/forms";
 import {CategoryServiceService} from "../../../../service/CategoryService.service";
 import {Observable} from "rxjs";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgOptimizedImage} from "@angular/common";
 import {ProductServiceService} from "../../../../service/ProductService.service";
 import {RouterLink} from "@angular/router";
 
@@ -14,7 +14,8 @@ import {RouterLink} from "@angular/router";
   imports: [
     FormsModule,
     NgForOf,
-    RouterLink
+    RouterLink,
+    NgOptimizedImage
   ],
   templateUrl: './list-products.component.html',
   styleUrl: './list-products.component.css'
@@ -38,12 +39,30 @@ export class ListProductsComponent implements OnInit{
     this.getAllProducts();
   }
 
-  public getAllProducts(){
+  // public getAllProducts(){
+  //   let observable: Observable<Product[]> = this._productService.findAllProducts();
+  //   observable.subscribe({
+  //     next: (products: Product[])=> {
+  //       console.log('Productos cargados:', products);
+  //       this.products = products;
+  //       this.createRows();
+  //     },
+  //     error: (error): void => {
+  //       this.products = [];
+  //       console.log(error);
+  //     }
+  //   });
+  // }
+
+  public getAllProducts() {
     let observable: Observable<Product[]> = this._productService.findAllProducts();
     observable.subscribe({
       next: (products: Product[])=> {
         console.log('Productos cargados:', products);
-        this.products = products;
+        this.products = products.map(product => {
+          product.image = 'http://localhost:8080' + product.image; // Ajusta la URL base del backend según tu configuración
+          return product;
+        });
         this.createRows();
       },
       error: (error): void => {
@@ -94,6 +113,4 @@ export class ListProductsComponent implements OnInit{
       this.rows.push(this.products.slice(i, i + 3));
     }
   }
-
-
 }

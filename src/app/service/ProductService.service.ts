@@ -13,6 +13,9 @@ export class ProductServiceService {
 
   constructor(private _http: HttpClient) { }
 
+  public uploadImage(formData: FormData): Observable<string> {
+    return this._http.post(environmentLocalMicro.API_URL + this.endpoint + '/uploadImage', formData, { responseType: 'text' });
+  }
   public createProduct(product: Product, categoryId: number, userId: number): Observable<Product> {
 
     let headers: HttpHeaders = new HttpHeaders();
