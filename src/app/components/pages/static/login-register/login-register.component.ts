@@ -103,7 +103,16 @@ export class LoginRegisterComponent implements OnInit{
       .subscribe( {
         next: (loginResponse : LoginResponse): void =>{
           this.findByEmail(loginResponse.email);
-          this.router.navigateByUrl('/home-page');
+          this.router.navigateByUrl('/home-page').then(success => {
+            if (success) {
+              console.log('Navigation is successful!');
+              window.location.reload();
+            } else {
+              console.log('Navigation has failed!');
+            }
+          }).catch(error => {
+            console.error('Navigation error:', error);
+          });
         },
         error: (error): void =>{
           alert(error.message);
@@ -119,14 +128,12 @@ export class LoginRegisterComponent implements OnInit{
           this.resetFormLogin();
           // sessionStorage.setItem("userLogin", user.toString());
           sessionStorage.setItem("userLogin", JSON.stringify(user));
-          window.location.reload();
         },
         error: (error): void =>{
           alert(error.message);
         }
       });
   }
-
 
   private resetForm(): void {
     this.fullName = '';
