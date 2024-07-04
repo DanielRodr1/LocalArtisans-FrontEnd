@@ -1,0 +1,90 @@
+.table-button{
+  background: 0%;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.responsive-button{
+  max-width: 100%;
+  height: auto;
+}
+.style-td{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid #B8885B;
+}
+.style-th{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(184,136,91,0.6);
+  border: 1px solid #B8885B;
+
+}
+.div-table{
+  font-family: "Josefin Slab";
+  padding: 50px 100px 10px 100px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+}
+
+.table-class{
+  border: 1px solid #B8885B;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+tbody tr{
+  cursor: pointer ;
+}
+tbody tr:hover {
+  background-color: #D9D4D3;
+}
+
+.carousel-style{
+  height: 500px;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.carousel-item {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.carousel-item img {
+  position: absolute;
+  top: -12%;
+  object-fit: contain;
+}
+
+.carousel-caption {
+  font-family: "Josefin Slab";
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 600px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
