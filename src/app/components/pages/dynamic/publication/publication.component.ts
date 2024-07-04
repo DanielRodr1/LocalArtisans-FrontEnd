@@ -21,13 +21,11 @@ export class PublicationComponent implements OnInit{
 
   public product : Product;
   public user: User;
-  public userId: number;
   private readonly productId : number;
 
   public constructor(private _productService: ProductServiceService, route: ActivatedRoute, private _userService: UserServiceService) {
     this.product = new Product();
     this.user = new User();
-    this.userId = 0;
     this.productId = route.snapshot.params['productId'];
   }
 
@@ -39,11 +37,12 @@ export class PublicationComponent implements OnInit{
     let observable: Observable<Product> = this._productService.findById(productId);
     observable.subscribe({
       next: (prod : Product) => {
+        prod.image = 'http://localhost:8080' + prod.image;
         this.product = prod;
         console.log(this.product);
-        if (prod.userId) { // Verificar si el ID del usuario está definido
-          this.userId = prod.userId;
-          this.findUserById(prod.userId);
+        if (prod.user) { // Verificar si el ID del usuario está definido
+          this.user = prod.user;
+          // this.findUserById(prod.userId);
         } else {
           console.log('El ID del usuario no está definido en el producto.');
         }
@@ -55,18 +54,17 @@ export class PublicationComponent implements OnInit{
     });
   }
 
-  private findUserById(userId: number): void{
-    let observable: Observable<User> = this._userService.getUserById(userId);
-    observable.subscribe({
-      next: (usr: User) => {
-        this.user = usr;
-      },
-      error: (error): void =>{
-        this.user = new User();
-        console.log(error.message());
-      }
-    });
-
-  }
+  // private findUserById(userId: number): void{
+  //   let observable: Observable<User> = this._userService.getUserById(userId);
+  //   observable.subscribe({
+  //     next: (usr: User) => {
+  //       this.user = usr;
+  //     },
+  //     error: (error): void =>{
+  //       this.user = new User();
+  //       console.log(error.message());
+  //     }
+  //   });
+  // }
 
 }

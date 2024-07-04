@@ -1,12 +1,11 @@
 <div class="container">
 
-
+  <div class="breadcrumb">
+    <a routerLink="/list-product" class="return-link"><i class="fas fa-arrow-left"></i><<..Volver</a>
+  </div>
 
   <div id="contenedor-imagen">
-    <div class="breadcrumb">
-      <a routerLink="/list-product" class="return-link"><i class="fas fa-arrow-left"></i> Volver</a>
-    </div>
-    <img src="../../../../../assets/ancient-pottery-vessels-collection.jpg" alt="Mi Foto" id="imagen">
+    <img [src]="product.image" alt="Mi Foto" id="imagen">
   </div>
 
 
@@ -31,7 +30,7 @@
     <div class="card">
       <div class="card-body">
         <h1 class="card-title">Detalles del vendedor </h1>
-        <h5 class="card-text"><i class="fas fa-user"></i> Juan Miguel Ugarte</h5>
+        <h5 class="card-text"><i class="fas fa-user"></i>{{ user.fullName }}</h5>
       </div>
     </div>
 
