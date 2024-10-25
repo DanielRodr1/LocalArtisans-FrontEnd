@@ -1,5 +1,5 @@
 services:
   artisans-front:
-    image: local-artisans-front
+    image: harrycas/artisans-front
     ports:
       - "80:80"

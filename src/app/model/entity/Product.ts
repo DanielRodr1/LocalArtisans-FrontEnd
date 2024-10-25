@@ -1,5 +1,6 @@
 import {IProduct} from "../interface/IProduct";
 import {Category} from "./Category";
+import {User} from "./User";
 
 export class Product implements IProduct{
 
@@ -11,6 +12,7 @@ export class Product implements IProduct{
   private _active:boolean;
   private _userId:number;
   private _category:Category;
+  private _user:User;
 
   constructor(productId?: number, name?: string, description?: string, image?: string, price?: number,
               active?: boolean, userId?: number, category?: Category) {
@@ -22,6 +24,15 @@ export class Product implements IProduct{
     this._active = active ? active : true;
     this._category = category ?  category : new Category();
     this._userId = userId ? userId : 0;
+    this._user = new User();
+  }
+
+  get user(): User {
+    return this._user;
+  }
+
+  set user(value: User) {
+    this._user = value;
   }
 
   get productId(): number {

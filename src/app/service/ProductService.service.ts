@@ -9,9 +9,13 @@ import {environmentLocalMicro} from "../environments/environment.local.micro";
 })
 export class ProductServiceService {
 
-  private readonly endpoint: string = "/product"
+  private readonly endpoint: string = "/api/v1/product"
 
   constructor(private _http: HttpClient) { }
+
+  public uploadImage(formData: FormData): Observable<string> {
+    return this._http.post(environmentLocalMicro.API_URL + this.endpoint + '/uploadImage', formData, { responseType: 'text' });
+  }
 
   public createProduct(product: Product, categoryId: number, userId: number): Observable<Product> {
 
@@ -30,6 +34,12 @@ export class ProductServiceService {
   public findAllProducts():Observable<Product[]>{
     return this._http
       .get<Product[]>(environmentLocalMicro.API_URL + this.endpoint + '/findAllProducts')
+      .pipe(catchError(this.errors));
+  }
+
+  public findById(productId: number):Observable<Product>{
+    return this._http
+      .get<Product>(environmentLocalMicro.API_URL + this.endpoint + `/${productId}`)
       .pipe(catchError(this.errors));
   }
 

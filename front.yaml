@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - image: harrycas/frontend-arm # Reemplaza con tu imagen de frontend
+          name: frontend
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  ports:
+    - port: 80  # Puerto del servicio
+      protocol: TCP
+      targetPort: 80  # Puerto del contenedor del frontend
+  selector:
+    app: frontend  # Selección de pods que pertenecen al frontend
+  type: LoadBalancer
+

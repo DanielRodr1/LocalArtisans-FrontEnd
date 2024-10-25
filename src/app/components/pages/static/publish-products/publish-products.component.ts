@@ -59,22 +59,31 @@ export class PublishProductsComponent implements OnInit{
     }
   }
 
+  public onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      this._productService.uploadImage(formData).subscribe(
+        (response: string) => {
+          this.image = response; // Guardar la URL de la imagen directamente desde la respuesta
+        },
+        (error) => {
+          console.error('Error al subir la imagen:', error);
+          // Manejar el error adecuadamente, por ejemplo, mostrar un mensaje al usuario
+        }
+      );
+    }
+  }
+
   public crearProducto():void{
 
     let product: Product = new Product();
-    // let userLogin = sessionStorage.getItem("userLogin");
-    // let userLoginParse;
-    // let userNew : User = new User();
-    // if (userLogin){
-    //   userLoginParse = JSON.parse(userLogin);
-    //   userNew.userId = userLoginParse.userId;
-    // }
-
     product.name = this.name;
     product.description = this.description;
     product.image = this.image;
     product.price = this.price;
-    // product.userId = userNew.userId;
     product.userId = this.userId;
     this._productService
       .createProduct(product, this.categoryId, this.userId)

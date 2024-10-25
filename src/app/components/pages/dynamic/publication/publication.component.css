@@ -1,12 +1,11 @@
 .container {
   display: flex;
-  width: 2000px;
-
-}
-
-body {
   font-family: 'Josefin Slab', serif;
   font-weight: bold;
+}
+
+div > a{
+  margin-top: 20px;
 }
 
 .side-content {
@@ -39,12 +38,18 @@ body {
 }
 #contenedor-imagen {
   float: left;
-  margin-right: 20px;
+  width: auto;
+  justify-content: center;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 200px;
 }
 
 #imagen {
-  width: 800px; /* Ancho deseado */
-  height: 600px; /* Alto deseado */
+  max-width: 750px; /* Ancho deseado */
+  display: flex;
   border: 10px;
 }
 
@@ -54,10 +59,10 @@ body {
 
   color: black; /* Cambia el color del texto a negro */
   font-weight: bold; /* Establece el texto en negrita */
-  }
+}
 
 .container-left{
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .fa-arrow-left, a{

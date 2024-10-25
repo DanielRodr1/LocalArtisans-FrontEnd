@@ -26,18 +26,8 @@ export class NavComponent implements OnInit{
 
   public ngOnInit() {
     this.verifyLogin();
+    this.getProfile();
   }
-
-  // private verifyLogin(){
-  //   let userLogin = sessionStorage.getItem("userLogin");
-  //   // let userLoginParse;
-  //   if (userLogin){
-  //     this.isLogged=true;
-  //     let userLoginParse = JSON.parse(userLogin);
-  //     this.user.userType = userLoginParse.userType;
-  //     console.log(this.user.userType);
-  //   }
-  // }
 
   private verifyLogin() {
     let userLogin = sessionStorage.getItem("userLogin");
@@ -56,10 +46,22 @@ export class NavComponent implements OnInit{
     }
   }
 
-
-  public logout(){
-      this._authService.logout();
+  public getProfile(): string {
+    switch (this.user.userType) {
+      case 'admin':
+        return '/admin';
+      case 'vendedor':
+        return '/vendedor';
+      case 'cliente':
+        return '/cliente';
+      default:
+        return '/';
+    }
   }
 
+  public logout(){
+    this._authService.logout();
+    this.isLogged=false;
+  }
 
 }
