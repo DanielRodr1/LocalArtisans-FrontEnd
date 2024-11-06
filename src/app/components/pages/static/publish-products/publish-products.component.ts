@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductServiceService} from "../../../../service/ProductService.service";
+import {ProductService} from "../../../../service/product.service";
 import {Product} from "../../../../model/entity/Product";
 import {FormsModule} from "@angular/forms";
 import {Observable} from "rxjs";
 import {Category} from "../../../../model/entity/Category";
-import {CategoryServiceService} from "../../../../service/CategoryService.service";
+import {CategoryService} from "../../../../service/category.service";
 import {NgForOf} from "@angular/common";
 import {User} from "../../../../model/entity/User";
 
@@ -20,7 +20,7 @@ import {User} from "../../../../model/entity/User";
 })
 export class PublishProductsComponent implements OnInit{
 
-  public products: Product[];
+  public products: Product[]; //Podría emitirse
   public productId: number;
   public name: string;
   public description: string;
@@ -30,7 +30,7 @@ export class PublishProductsComponent implements OnInit{
   public userId: number;
   public categories: Category[];
 
-  public constructor(private _productService: ProductServiceService, private _categoryService: CategoryServiceService) {
+  public constructor(private _productService: ProductService, private _categoryService: CategoryService) {
     this.products = [];
     this.productId = 0;
     this.name = '';
@@ -90,6 +90,7 @@ export class PublishProductsComponent implements OnInit{
       .subscribe({
         next: (product: Product): void =>{
           this.products.push(product);
+          // Puede omitirse este push
           this.resetForm();
         },
         error: (error): void => {

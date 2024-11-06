@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 import {Product} from "../../../../model/entity/Product";
-import {ProductServiceService} from "../../../../service/ProductService.service";
+import {ProductService} from "../../../../service/product.service";
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {Observable} from "rxjs";
-import {UserServiceService} from "../../../../service/UserService.service";
+import {UserService} from "../../../../service/user.service";
 import {User} from "../../../../model/entity/User";
 
 @Component({
@@ -23,7 +23,7 @@ export class PublicationComponent implements OnInit{
   public user: User;
   private readonly productId : number;
 
-  public constructor(private _productService: ProductServiceService, route: ActivatedRoute, private _userService: UserServiceService) {
+  public constructor(private _productService: ProductService, route: ActivatedRoute, private _userService: UserService) {
     this.product = new Product();
     this.user = new User();
     this.productId = route.snapshot.params['productId'];

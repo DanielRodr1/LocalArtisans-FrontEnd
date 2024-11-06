@@ -1,15 +1,16 @@
 import {IProductImg} from "../interface/IProductImg";
 
 export class ProductImg implements IProductImg {
+
   private _id:number;
   private _productId:number;
   private _url:string;
 
 
   constructor(id?: number, productId?: number, url?: string) {
-    this._id = id ? id:0;
-    this._productId = productId ? productId:0;
-    this._url = url ? url:'';
+    this._id = id ?? 0;
+    this._productId = productId ?? 0;
+    this._url = url ?? '';
   }
 
   get id(): number {
@@ -38,14 +39,6 @@ export class ProductImg implements IProductImg {
 
   public toString():string{
     return JSON.stringify(this);
-  }
-
-  public toJSON() : object{
-    return {
-      id: this._id,
-      productId: this._productId,
-      url: this._url
-    }
   }
 
 }

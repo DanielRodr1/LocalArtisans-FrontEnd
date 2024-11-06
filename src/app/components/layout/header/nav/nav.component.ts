@@ -3,6 +3,8 @@ import {NgIf, NgOptimizedImage} from "@angular/common";
 import {User} from "../../../../model/entity/User";
 import {AuthServiceService} from "../../../../service/AuthService.service";
 import {RouterLink} from "@angular/router";
+import {UserType} from "../../../../model/entity/enums/user-type";
+import {CartService} from "../../../../service/cart-service";
 
 @Component({
   selector: 'app-nav',
@@ -16,43 +18,64 @@ import {RouterLink} from "@angular/router";
   styleUrl: './nav.component.css'
 })
 export class NavComponent implements OnInit{
-  public isLogged : boolean;
-  public user: User;
 
-  constructor(private _authService: AuthServiceService) {
-    this.isLogged = false;
+  public isLogged : boolean = false;
+  public user: User;
+  public userTypeEnum = UserType;
+  public cartItemCount: number = 0;
+
+  constructor(private _authService: AuthServiceService,private _cartService: CartService) {
     this.user = new User();
   }
 
   public ngOnInit() {
-    this.verifyLogin();
+
     this.getProfile();
+
+    this._authService.isLoggedIn$.subscribe(status => {
+      this.isLogged = status;
+      console.log('Navbar updated. User is logged in:', this.isLogged);
+      if (status) {
+        this.loadUserFromSession();
+        this.updateCartCount();
+      } else {
+        this.user = new User(); // Reset user at logged out
+        this.cartItemCount = 0; // Reset cart count
+      }
+    });
+
   }
 
-  private verifyLogin() {
-    let userLogin = sessionStorage.getItem("userLogin");
-    let userLoginParse;
+  private loadUserFromSession(): void {
+    const userLogin = sessionStorage.getItem("userLogin");
     if (userLogin) {
       try {
-        userLoginParse = JSON.parse(userLogin);
-        if (userLoginParse && userLoginParse.userType) {
-          this.user.userType = userLoginParse.userType;
-          console.log(this.user.userType);
-        }
+        this.user = JSON.parse(userLogin);
+        console.log('User loaded from session:', this.user);
       } catch (error) {
-        console.error("Error al analizar el JSON de userLogin:", error);
+        console.error("Error parsing userLogin from session:", error);
       }
-      this.isLogged = true;
+    }
+  }
+
+  private updateCartCount(): void {
+    if (this.user && this.user.userId) {
+      this._cartService.updateCartItemCount(this.user.userId);
+      // Observable for Cart item count
+      this._cartService.cartItemCount$.subscribe((count) => {
+        this.cartItemCount = count;
+        console.log('Cart item count updated:', this.cartItemCount);
+      });
     }
   }
 
   public getProfile(): string {
     switch (this.user.userType) {
-      case 'admin':
+      case UserType.ADMIN:
         return '/admin';
-      case 'vendedor':
+      case UserType.ARTISAN:
         return '/vendedor';
-      case 'cliente':
+      case UserType.CLIENT:
         return '/cliente';
       default:
         return '/';
@@ -61,7 +84,7 @@ export class NavComponent implements OnInit{
 
   public logout(){
     this._authService.logout();
-    this.isLogged=false;
+    console.log("Logged out user");
   }
 
 }

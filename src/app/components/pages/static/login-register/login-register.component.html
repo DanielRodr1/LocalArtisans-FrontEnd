@@ -51,11 +51,11 @@
               <label for="inputUserType" class="form-label">Rol</label>
               <select id="inputUserType" class="form-select" name="userType" required (change)="onRoleChange($event)" [(ngModel)]="userType">
                 <option selected>Seleccione una opción</option>
-                <option value="vendedor">Vendedor</option>
-                <option value="cliente">Cliente</option>
+                <option value="artisan">Vendedor</option>
+                <option value="client">Cliente</option>
               </select>
             </div>
-            <blockquote class="blockquote" *ngIf="codigo">
+            <blockquote class="blockquote" *ngIf="showArtisanCode">
               <div class="col-md-12">
                 <label for="inputCodigoArtesano" class="form-label">Código de Artesano</label>
                 <input type="text" class="form-control" id="inputCodigoArtesano" name="codigoArtesano" [(ngModel)]="artisanCode" required>
@@ -82,7 +82,7 @@
               <label for="inputProfileImage" class="form-label">Ingrese su imagen </label>
               <input type="text" class="form-control" id="inputProfileImage" name="profileImage" placeholder="Ingrese su imagen" [(ngModel)]="profileImage" required>
             </div>
-            <button class="btn btn-register" type="button" (click)="crearUsuario()">Crear Cuenta</button>
+            <button class="btn btn-register" type="button" (click)="createUser()">Crear Cuenta</button>
           </form>
         </div>
       </div>

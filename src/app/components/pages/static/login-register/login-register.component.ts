@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {NgIf} from "@angular/common";
-import {UserServiceService} from "../../../../service/UserService.service";
+import {UserService} from "../../../../service/user.service";
 import {User} from "../../../../model/entity/User";
 import {FormsModule} from "@angular/forms";
-import {LoginResponse} from "../../../../model/views/LoginResponse";
 import {AuthServiceService} from "../../../../service/AuthService.service";
 import {Router} from "@angular/router";
+import {UserType} from "../../../../model/entity/enums/user-type";
+import {LoginRequest} from "../../../../model/views/login-request";
+import {ILoginResponse} from "../../../../model/interface/ILoginResponse";
 
 @Component({
   selector: 'app-login-register',
@@ -19,58 +21,37 @@ import {Router} from "@angular/router";
 })
 export class LoginRegisterComponent implements OnInit{
 
-  public codigo : boolean;
-  public users: User[];
-  public userId:number;
-  public fullName:string;
-  public dni:string;
-  public email:string;
-  public phone:string;
-  public userType:string;
-  public profileImage:string;
-  public password:string;
-  public passwordValidation: string;
-  public artisanCode: string;
+  public showArtisanCode: boolean = false;
+  public users: User[] = [];
+  public userId: number = 0;
+  public fullName: string = '';
+  public dni: string = '';
+  public email: string = '';
+  public password: string = '';
+  public phone: string = '';
+  public artisanCode: string = '';
+  public userType: UserType = UserType.CLIENT;
+  public profileImage: string = '';
+  public passwordValidation: string = '';
 
-  public emailLogin:string;
-  public passwordLogin:string;
+  public emailLogin: string = '';
+  public passwordLogin: string = '';
 
 
-  public constructor(private _userService: UserServiceService, private _authService: AuthServiceService, private router: Router) {
-    this.codigo = false;
-    this.users = [];
-    this.userId = 0;
-    this.fullName = '';
-    this.dni = '';
-    this.email = '';
-    this.phone = '';
-    this.artisanCode = '';
-    this.userType = '';
-    this.profileImage = '';
-    this.password = '';
-    this.passwordValidation = '';
-    this.emailLogin = '';
-    this.passwordLogin = '';
-  }
+  public constructor(private _userService: UserService, private _authService: AuthServiceService, private router: Router) {}
 
   public ngOnInit(){}
 
 
   onRoleChange(event: Event) : void {
-    const roleSelect = event.target as HTMLSelectElement; //Captura el Select con su value
-    const value = roleSelect.value; //Agarra el value del Select
-
-    if(value == 'vendedor'){
-      this.codigo = true;
-    } else {
-      this.codigo = false
-    }
+    const roleSelect = event.target as HTMLSelectElement; // Capture with its value
+    const value = roleSelect.value; // Set value with the role selected
+    this.showArtisanCode = value == 'artisan';
   }
 
-  public crearUsuario(): void{
+  public createUser(): void{
 
     let user: User = new User();
-
     user.email = this.email;
     user.password = this.password;
     user.fullName = this.fullName;
@@ -95,48 +76,39 @@ export class LoginRegisterComponent implements OnInit{
   }
 
   public login(){
+    let loginRequest: LoginRequest = new LoginRequest(this.emailLogin, this.passwordLogin);
+    //console.log('Sending login request:', loginRequest);
+    this._authService.login(loginRequest).subscribe({
+      next: (loginResponse : ILoginResponse): void =>{
+        if (loginResponse && loginResponse.userId) {
+          // Store the user in session
+          sessionStorage.setItem("userLogin", JSON.stringify(loginResponse));
+          //console.log('User stored in session:', loginResponse);
 
-    let loginResponse: LoginResponse = new LoginResponse(this.emailLogin, this.passwordLogin);
+          // Change isLoggedIn Subject status
+          this._authService.setLoginStatus(true);
 
-    this._authService
-      .login(loginResponse)
-      .subscribe( {
-        next: (loginResponse : LoginResponse): void =>{
-          this.findByEmail(loginResponse.email);
-          this.router.navigateByUrl('/home-page')
-            .then(success => {
-              if (success) {
-                console.log('Navigation is successful!');
-              } else {
-                console.log('Navigation has failed!');
-              }
-            })
-            .catch(err => {
-              console.error('Navigation error:', err);
-            });
-        },
-        error: (error): void =>{
-          alert(error.message);
+          // Redirect user to Homepage
+          this.router.navigate(['/home-page']).then(success => {
+            if (success) {
+              console.log('Navigation is successful!');
+            } else {
+              console.log('Navigation has failed!');
+            }
+          }).catch(err => {
+            console.error('Navigation error:', err);
+          });
+        } else {
+          console.error('Login response does not contain userId or other required data');
+          alert('User ID is missing in the login response');
         }
-      });
+      },
+      error: (error): void => {
+        alert(error.message || 'Login failed');
+        console.error('Login error:', error);
+      }
+    });
   }
-
-  private findByEmail(email: string){
-    this._userService
-      .findByEmail(email)
-      .subscribe( {
-        next: (user : User): void =>{
-          this.resetFormLogin();
-          // sessionStorage.setItem("userLogin", user.toString());
-          sessionStorage.setItem("userLogin", JSON.stringify(user));
-          window.location.reload();
-        },
-        error: (error): void =>{
-          alert(error.message);
-        }
-      });
-  }
-
 
   private resetForm(): void {
     this.fullName = '';
@@ -145,14 +117,9 @@ export class LoginRegisterComponent implements OnInit{
     this.profileImage = '';
     this.dni = '';
     this.artisanCode = '';
-    this.userType = '';
+    this.userType = UserType.CLIENT;
     this.phone = '';
     this.passwordValidation = '';
-  }
-
-  private resetFormLogin(): void {
-    this.emailLogin = '';
-    this.passwordLogin = '';
   }
 
 }

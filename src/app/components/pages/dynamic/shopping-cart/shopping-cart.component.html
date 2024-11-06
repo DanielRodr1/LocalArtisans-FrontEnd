@@ -1,0 +1,41 @@
+<!-- cart.component.html -->
+<h2>Productos seleccionados</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Producto</th>
+    <th>Unidades</th>
+    <th>Precio</th>
+    <th>Total</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody *ngIf="cart && cart.orderProducts.length; else emptyCart">
+  <tr *ngFor="let op of cart.orderProducts">
+    <td>
+      <img [src]="environmentLocalMicro.API_URL + '/api/v1/images/' + op.productDetails?.primaryImageUrl" alt="{{ op.productDetails?.name }}" width="100" height="100">
+      {{ op.productDetails?.name }}
+    </td>
+    <td>
+      <button (click)="decreaseQuantity(op.productId)">-</button>
+      {{ op.quantity}}
+      <button (click)="increaseQuantity(op.productId)">+</button>
+    </td>
+    <td>S/.{{ op.productDetails?.price ?? 0 }}</td>
+    <td>S/.{{ (op.productDetails?.price ?? 0) * op.quantity | number:'1.2-2' }}</td>
+    <td>
+      <button (click)="removeProduct(op.productId)">🗑️</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div>
+  <h3>Monto Total: {{ totalAmount | currency:'PEN':'symbol':'1.2-2' }}</h3>
+  <a class="btn btn-primary" [routerLink]="['/checkout']">Proceder al Checkout</a>
+</div>
+
+
+<ng-template #emptyCart>
+  <p>No hay productos en el carrito.</p>
+</ng-template>
+

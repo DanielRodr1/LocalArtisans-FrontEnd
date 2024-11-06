@@ -1,4 +1,8 @@
+import {UserType} from "../entity/enums/user-type";
+
 export interface ILoginResponse {
+  userId: number;
   email: string;
-  password: string;
+  fullName: string;
+  userType: UserType;
 }

@@ -1,4 +1,4 @@
-import {Category} from "../entity/Category";
+import {ICategory} from "./ICategory";
 
 export interface IProduct{
 
@@ -8,7 +8,7 @@ export interface IProduct{
   price:number;
   active:boolean;
   userId:number;
-  category:Category;
+  category:ICategory | null;
 
 }
 

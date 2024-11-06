@@ -12,29 +12,10 @@
       </select>
   </div>
 
-<!--  <div class="productsList" *ngFor="let row of rows">-->
-<!--    <div class="col-md-3" *ngFor="let product of row">-->
-<!--      <div class="card colorCard" style="width: 18rem;">-->
-<!--        <img src="../../../../../assets/Img/img6.png" class="card-img-top imgProduct" alt="imagen card">-->
-<!--        <div class="card-body textCard">-->
-<!--          <span class="spanProduct">-->
-<!--            <div class="col-md-8">-->
-<!--              <h5><strong>{{product.name}}</strong></h5>-->
-<!--            </div>-->
-<!--            <div class="col-md-4 productHeart">-->
-<!--                <img class="imgHeart" src="../../../../../assets/Img/corazon-circular.png" alt="Heart Icon">-->
-<!--              </div>-->
-<!--          </span>-->
-<!--          <p class="card-text">S/{{product.price}}</p>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-
   <div class="productsList">
     <div class="col-md-3" *ngFor="let product of products">
-      <div class="card colorCard" style="width: 18rem;">
-        <img src="../../../../../assets/Img/img6.png" class="card-img-top imgProduct" alt="imagen card">
+      <div class="card colorCard" style="width: 18rem;" [routerLink]="['/publication', product.productId]">
+        <img [src]="product.image" class="card-img-top imgProduct" alt="imagen card">
         <div class="card-body textCard">
           <span class="spanProduct">
             <div class="col-md-8">

@@ -1,4 +1,5 @@
 import {IUser} from "../interface/IUser";
+import {UserType} from "./enums/user-type";
 
 export class User implements IUser{
 
@@ -7,27 +8,26 @@ export class User implements IUser{
   private _fullName:string;
   private _dni:string;
   private _email:string;
-  private _phone:string;
-  private _userType:string;
-  private _profileImage:string;
   private _password:string;
+  private _phone:string;
   private _artisanCode: string;
+  private _userType:UserType;
+  private _profileImage:string;
 
   // Constructor
-  constructor(userId?: number, fullName?: string, dni?: string, email?: string, phone?: string, artisanCode?: string, userType?: string, profileImage?: string, password?: string) {
-    this._userId = userId ? userId : 0;
-    this._fullName = fullName ? fullName: '';
-    this._dni = dni ? dni : '';
-    this._email = email ? email : '';
-    this._phone = phone ? phone : '';
-    this._artisanCode = artisanCode ? artisanCode : '';
-    this._userType = userType ? userType : '';
-    this._profileImage = profileImage ? profileImage : '';
-    this._password = password ? password : '';
+  constructor(userId?: number, fullName?: string, dni?: string, email?: string, password?: string, phone?: string, artisanCode?: string, userType?: UserType, profileImage?: string) {
+    this._userId = userId ?? 0;
+    this._fullName = fullName ?? '';
+    this._dni = dni ?? '';
+    this._email = email ?? '';
+    this._phone = phone ?? '';
+    this._artisanCode = artisanCode ?? '';
+    this._userType = userType ?? UserType.CLIENT;
+    this._profileImage = profileImage ?? '';
+    this._password = password ?? '';
   }
 
   // Getters & Setters
-
   get artisanCode(): string {
     return this._artisanCode;
   }
@@ -76,11 +76,11 @@ export class User implements IUser{
     this._phone = value;
   }
 
-  get userType(): string {
+  get userType(): UserType {
     return this._userType;
   }
 
-  set userType(value: string) {
+  set userType(value: UserType) {
     this._userType = value;
   }
 

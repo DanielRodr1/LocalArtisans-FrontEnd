@@ -1,0 +1,63 @@
+<div class="checkout-container">
+  <h2>Información de Delivery</h2>
+
+  <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()" class="checkout-form">
+    <div formGroupName="deliveryInfo">
+      <div class="form-group">
+        <input id="address" formControlName="address" type="text" placeholder="Dirección" />
+      </div>
+      <div class="form-group-inline">
+        <input id="city" formControlName="city" type="text" placeholder="Ciudad" />
+        <input id="postalCode" formControlName="postalCode" type="text" placeholder="Cód. Postal" />
+      </div>
+    </div>
+    <!-- Información de pago -->
+    <div class="payment-section">
+      <h3>MONTO A PAGAR</h3>
+      <span class="amount">= $ {{ totalPrice | number:'1.2-2' }}</span>
+    </div>
+    <div id="card-element" class="card-element"></div>
+    <div id="card-errors" class="card-errors" role="alert"></div>
+    <button type="submit" [disabled]="checkoutFormGroup.invalid || !cardElement" class="submit-btn">Pagar</button>
+
+    <hr>
+    <h4>Otras opciones de pago:</h4>
+    <!-- Opción de pago con Apple Pay -->
+    <div id="payment-request-button"></div>
+  </form>
+
+
+</div>
+
+<!--
+<div class="checkout-container">
+  <h2>Checkout</h2>
+
+  <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()" class="checkout-form">
+
+    &lt;!&ndash; Customer Details &ndash;&gt;
+    <div class="form-section">
+      <h3>Customer Information</h3>
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" type="email" placeholder="Enter your email" required />
+      <div *ngIf="checkoutFormGroup.get('email')?.invalid && checkoutFormGroup.get('email')?.touched" class="error">
+        Please enter a valid email.
+      </div>
+    </div>
+
+    &lt;!&ndash; Card Details &ndash;&gt;
+    <div class="form-section">
+      <h3>Payment Information</h3>
+      <div id="card-element" class="card-element">
+        &lt;!&ndash; Stripe Element will be mounted here &ndash;&gt;
+      </div>
+      <div id="card-errors" class="card-errors" role="alert"></div>
+    </div>
+
+    &lt;!&ndash; Submit Button &ndash;&gt;
+    <button type="submit" [disabled]="checkoutFormGroup.invalid || !cardElement" class="submit-btn">
+      Pay {{ totalPrice | currency }}
+    </button>
+  </form>
+</div>
+-->

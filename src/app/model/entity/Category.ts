@@ -1,14 +1,15 @@
 import {ICategory} from "../interface/ICategory";
 
 export class Category implements ICategory{
+
   private _categoryId: number;
   private _name:string;
   private _description:string;
 
   constructor(categoryId?: number, name?: string, description?: string) {
-    this._categoryId = categoryId ? categoryId : 0;
-    this._name = name ? name : '';
-    this._description = description ? description : '';
+    this._categoryId = categoryId ?? 0;
+    this._name = name ?? '';
+    this._description = description ?? '';
   }
 
 

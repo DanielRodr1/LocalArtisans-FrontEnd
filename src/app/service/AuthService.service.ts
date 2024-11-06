@@ -1,37 +1,48 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {catchError, Observable, throwError} from "rxjs";
+import {BehaviorSubject, catchError, Observable, throwError} from "rxjs";
 import {environmentLocal} from "../environments/environment.local";
-import {LoginResponse} from "../model/views/LoginResponse";
 import {Router} from "@angular/router";
+import {LoginRequest} from "../model/views/login-request";
+import {ILoginResponse} from "../model/interface/ILoginResponse";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
 
-  private readonly endpoint: string = "/user"
+  private readonly endpoint: string = "/api/v1/user"
 
-  constructor(private _http: HttpClient, private router: Router) { }
+  private isLoggedIn = new BehaviorSubject<boolean>(false);
+  public isLoggedIn$ = this.isLoggedIn.asObservable();
 
-  public login(userResponse: LoginResponse): Observable<LoginResponse>{
+  constructor(private _http: HttpClient, private router: Router) {
+    const userLogin = sessionStorage.getItem("userLogin");
+    if (userLogin) {
+      this.isLoggedIn.next(true);
+    }
+  }
 
+  public login(loginRequest: LoginRequest): Observable<ILoginResponse> {
     let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.set('Content-Type', 'application/json; chatset=utf-8');
+    headers = headers.set('Content-Type', 'application/json; charset=utf-8');
 
-    return this._http
-      .post<LoginResponse>(
-        environmentLocal.API_URL + this.endpoint + '/login',
-        userResponse.toJSON(),
-        {headers: headers}
-      )
-      .pipe(catchError(this.errors));
+    return this._http.post<ILoginResponse>(
+      environmentLocal.API_URL + this.endpoint + '/login', loginRequest,
+      { headers: headers }
+    )
+    .pipe(catchError(this.errors));
+  }
+
+  public setLoginStatus(status: boolean): void {
+    this.isLoggedIn.next(status);
   }
 
   public logout(){
     sessionStorage.removeItem('userLogin');
-    console.log("Usuario deslogeado");
-    this.router.navigateByUrl('/login')
+    console.log("Logged out user");
+    this.setLoginStatus(false);
+    this.router.navigate(['/home-page']);
   }
 
   private errors(error: HttpErrorResponse) {
@@ -47,6 +58,5 @@ export class AuthServiceService {
     });
 
   }
-
 
 }

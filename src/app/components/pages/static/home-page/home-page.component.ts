@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {Category} from "../../../../model/entity/Category";
-import {CategoryServiceService} from "../../../../service/CategoryService.service";
+import {CategoryService} from "../../../../service/category.service";
 import {Observable} from "rxjs";
 import {NgForOf} from "@angular/common";
 
@@ -20,7 +20,7 @@ export class HomePageComponent implements OnInit{
   public categories: Category[];
   public slides : Category[][];
 
-  constructor(private _categoryService: CategoryServiceService) {
+  constructor(private _categoryService: CategoryService) {
     this.categories = [];
     this.slides = [];
   }

@@ -1,38 +1,25 @@
 import {IProduct} from "../interface/IProduct";
-import {Category} from "./Category";
-import {User} from "./User";
+import {ICategory} from "../interface/ICategory";
 
 export class Product implements IProduct{
 
   private _productId:number;
   private _name:string;
   private _description:string;
-  private _image:string;
   private _price:number;
   private _active:boolean;
   private _userId:number;
-  private _category:Category;
-  private _user:User;
+  private _category:ICategory | null;
 
-  constructor(productId?: number, name?: string, description?: string, image?: string, price?: number,
-              active?: boolean, userId?: number, category?: Category) {
-    this._productId = productId ? productId : 0;
-    this._name = name ? name : '';
-    this._description = description ? description : '';
-    this._image = image ? image: '';
-    this._price = price ? price : 0;
-    this._active = active ? active : true;
-    this._category = category ?  category : new Category();
-    this._userId = userId ? userId : 0;
-    this._user = new User();
-  }
-
-  get user(): User {
-    return this._user;
-  }
-
-  set user(value: User) {
-    this._user = value;
+  constructor(productId?: number, name?: string, description?: string, price?: number,
+              active?: boolean, userId?: number, category?: ICategory) {
+    this._productId = productId ?? 0;
+    this._name = name ??  '';
+    this._description = description ?? '';
+    this._price = price ?? 0;
+    this._active = active ?? true;
+    this._category = category ?? null;
+    this._userId = userId ?? 0;
   }
 
   get productId(): number {
@@ -59,14 +46,6 @@ export class Product implements IProduct{
     this._description = value;
   }
 
-  get image(): string {
-    return this._image;
-  }
-
-  set image(value: string) {
-    this._image = value;
-  }
-
   get price(): number {
     return this._price;
   }
@@ -91,11 +70,11 @@ export class Product implements IProduct{
     this._userId = value;
   }
 
-  get category(): Category {
+  get category(): ICategory | null {
     return this._category;
   }
 
-  set category(value: Category) {
+  set category(value: ICategory | null) {
     this._category = value;
   }
 
@@ -103,17 +82,16 @@ export class Product implements IProduct{
     return JSON.stringify(this);
   }
 
-  public toJSON() : object{
+  public toJSON(): object {
     return {
       productId: this._productId,
       name: this._name,
       description: this._description,
-      image: this._image,
       price: this._price,
-      active:this._active,
+      active: this._active,
       userId: this._userId,
-      category: this._category
-    }
+      category: this._category ? { ...this._category } : null // Serializa category si está presente
+    };
   }
 
 }

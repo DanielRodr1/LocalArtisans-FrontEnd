@@ -1,10 +1,12 @@
 import { Routes } from '@angular/router';
+import {ShoppingCartComponent} from "./components/pages/dynamic/shopping-cart/shopping-cart.component";
 // import {AdminComponent} from "./components/pages/dynamic/admin/admin.component";
 
 export const routes: Routes = [
   {
     path: '',
     redirectTo: '/home-page',
+    //redirectTo: '/shopping-cart',
     pathMatch: 'full'
   },
   {
@@ -22,7 +24,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./components/pages/static/help/help.component').then((c) => c.HelpComponent),
   },
-  {
+  /*{
     path: 'publication/:productId',
     loadComponent: () =>
       import('./components/pages/dynamic/publication/publication.component').then((c) => c.PublicationComponent)
@@ -36,6 +38,16 @@ export const routes: Routes = [
     path: 'publish-product',
     loadComponent: () =>
       import('./components/pages/static/publish-products/publish-products.component').then((c) => c.PublishProductsComponent),
+  },*/
+  {
+    path: 'shopping-cart',
+    loadComponent: () =>
+      import('./components/pages/dynamic/shopping-cart/shopping-cart.component').then((c) => c.ShoppingCartComponent),
+  },
+  {
+    path: 'checkout',
+    loadComponent: () =>
+      import('./components/pages/dynamic/checkout/checkout.component').then((c) => c.CheckoutComponent),
   }
   /*{
     path: 'admin',

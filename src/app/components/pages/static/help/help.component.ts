@@ -21,4 +21,5 @@ export class HelpComponent implements AfterViewInit {
       });
     });
   }
+
 }
