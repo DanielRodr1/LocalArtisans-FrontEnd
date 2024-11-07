@@ -5,12 +5,14 @@ export class ProductImg implements IProductImg {
   private _id:number;
   private _productId:number;
   private _url:string;
+  private _isPrimary:boolean;
 
 
-  constructor(id?: number, productId?: number, url?: string) {
+  constructor(id?: number, productId?: number, url?: string, isPrimary?: boolean) {
     this._id = id ?? 0;
     this._productId = productId ?? 0;
     this._url = url ?? '';
+    this._isPrimary = isPrimary ?? false;
   }
 
   get id(): number {
@@ -35,6 +37,14 @@ export class ProductImg implements IProductImg {
 
   set url(value: string) {
     this._url = value;
+  }
+
+  get isPrimary(): boolean {
+    return this._isPrimary;
+  }
+
+  set isPrimary(value: boolean) {
+    this._isPrimary = value;
   }
 
   public toString():string{

@@ -34,9 +34,9 @@ export class ProductService {
       .pipe(catchError(this.handleError));
   }
 
-  createProduct(product: Product, categoryId: number, userId: number): Observable<Product> {
-    return this._http
-      .post<Product>(`${this.apiUrl}/create/${categoryId}/${userId}`, product,{
+    createProduct(product: Product, categoryId: number, userId: number): Observable<Product> {
+      return this._http
+          .post<Product>(`${this.apiUrl}/create/${categoryId}/${userId}`, product,{
         headers: {
           'ngrok-skip-browser-warning': 'true'
         }

@@ -1,33 +1,35 @@
 import {IProduct} from "../interface/IProduct";
 import {ICategory} from "../interface/ICategory";
-
+import {ProductImg} from "./ProductImg";
 export class Product implements IProduct{
 
-  private _productId:number;
+  private _id:number;
   private _name:string;
   private _description:string;
   private _price:number;
   private _active:boolean;
   private _userId:number;
   private _category:ICategory | null;
+  private _images: ProductImg[];
 
-  constructor(productId?: number, name?: string, description?: string, price?: number,
-              active?: boolean, userId?: number, category?: ICategory) {
-    this._productId = productId ?? 0;
+  constructor(id?: number, name?: string, description?: string, price?: number,
+              active?: boolean, category?: ICategory, userId?: number, images?: ProductImg[]) {
+    this._id = id ?? 0;
     this._name = name ??  '';
     this._description = description ?? '';
     this._price = price ?? 0;
     this._active = active ?? true;
     this._category = category ?? null;
     this._userId = userId ?? 0;
+    this._images = images ?? [];
   }
 
-  get productId(): number {
-    return this._productId;
+  get id(): number {
+    return this._id;
   }
 
-  set productId(value: number) {
-    this._productId = value;
+  set id(value: number) {
+    this._id = value;
   }
 
   get name(): string {
@@ -78,13 +80,21 @@ export class Product implements IProduct{
     this._category = value;
   }
 
+  get images(): ProductImg[] {
+    return this._images;
+  }
+
+  set images(value: ProductImg[]) {
+    this._images = value;
+  }
+
   public toString():string{
     return JSON.stringify(this);
   }
 
   public toJSON(): object {
     return {
-      productId: this._productId,
+      id: this._id,
       name: this._name,
       description: this._description,
       price: this._price,

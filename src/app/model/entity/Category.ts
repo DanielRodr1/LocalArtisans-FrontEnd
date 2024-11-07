@@ -2,23 +2,23 @@ import {ICategory} from "../interface/ICategory";
 
 export class Category implements ICategory{
 
-  private _categoryId: number;
+  private _id: number;
   private _name:string;
   private _description:string;
 
-  constructor(categoryId?: number, name?: string, description?: string) {
-    this._categoryId = categoryId ?? 0;
+  constructor(id?: number, name?: string, description?: string) {
+    this._id = id ?? 0;
     this._name = name ?? '';
     this._description = description ?? '';
   }
 
 
-  get categoryId(): number {
-    return this._categoryId;
+  get id(): number {
+    return this._id;
   }
 
-  set categoryId(value: number) {
-    this._categoryId = value;
+  set id(value: number) {
+    this._id = value;
   }
 
   get name(): string {
@@ -43,7 +43,7 @@ export class Category implements ICategory{
 
   public toJSON() : object{
     return {
-      categoryId: this._categoryId,
+      id: this._id,
       name: this._name,
       description: this._description
     }

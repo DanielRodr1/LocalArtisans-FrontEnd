@@ -25,9 +25,11 @@
           </div>
           <div>
             <label for="inputCategory" class="form-label"><strong>Categoría</strong></label><br>
-            <select [(ngModel)]="categoryId" name="category" class="form-select selectCategory" id="inputCategory">
-              <option value="0"  disabled selected>Seleccione una categoría</option>
-              <option *ngFor="let categoryItem of categories" [value]="categoryItem.categoryId"> {{ categoryItem.name }}</option>
+            <select [(ngModel)]="categoryId" name="category" class="form-select selectCategory" id="inputCategory" (change)="onCategoryChange($event)">
+              <option value="">Seleccione una categoría</option>
+              <option *ngFor="let categoryItem of categories" [value]="categoryItem.id"> <!-- Usa categoryItem.id -->
+                {{ categoryItem.name }}
+              </option>
             </select>
           </div>
         </div>

@@ -13,17 +13,14 @@ export class ProductImgService {
 
   constructor(private _http: HttpClient) { }
 
-  uploadImage(productId: number, file: File): Observable<string> {
-    const formData = new FormData();
-    formData.append('productID', productId.toString());
-    formData.append('file', file);
+    uploadImage(productId: number, file: File, isPrimary: boolean): Observable<string> {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('productID', productId.toString());
+        formData.append('isPrimary', isPrimary.toString());
 
-    return this._http.post<string>(`${this.apiUrl}/upload`, formData,{
-      headers: {
-        'ngrok-skip-browser-warning': 'true'
-      }
-    });
-  }
+        return this._http.post<string>(`${this.apiUrl}/upload`, formData);
+    }
 
   deleteImage(productId: number, productImgId: number): Observable<string> {
     return this._http.delete<string>(`${this.apiUrl}/delete?productID=${productId}&productImgId=${productImgId}`,{

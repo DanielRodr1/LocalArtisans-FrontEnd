@@ -8,24 +8,38 @@
       <div>Filtrar por Categoría</div>
       <select [(ngModel)]="categoryId" name="category"  id="inputCategory" class="selectCatalog" (change)="findProductByCategory()">
         <option [value]="0">Seleccione una opción</option>
-        <option *ngFor="let category of categories" [value]="category.categoryId">{{category.name}}</option>
+        <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
       </select>
   </div>
 
+<!--  <div class="productsList">-->
+<!--    <div class="col-md-3" *ngFor="let product of products">-->
+<!--      <div class="card colorCard" style="width: 18rem;" [routerLink]="['/publication', product.productId]">-->
+<!--        <img [src]="product.image" class="card-img-top imgProduct" alt="imagen card">-->
+<!--        <div class="card-body textCard">-->
+<!--          <span class="spanProduct">-->
+<!--            <div class="col-md-8">-->
+<!--              <h5><strong>{{product.name}}</strong></h5>-->
+<!--            </div>-->
+<!--            <div class="col-md-4 productHeart">-->
+<!--                <img class="imgHeart" src="../../../../../assets/Img/corazon-circular.png" alt="Heart Icon">-->
+<!--            </div>-->
+<!--          </span>-->
+<!--          <p class="card-text">S/{{product.price}}</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
   <div class="productsList">
     <div class="col-md-3" *ngFor="let product of products">
-      <div class="card colorCard" style="width: 18rem;" [routerLink]="['/publication', product.productId]">
-        <img [src]="product.image" class="card-img-top imgProduct" alt="imagen card">
+      <div class="card colorCard" style="width: 18rem;" [routerLink]="['/publication', product.id]">
+        <!-- Mostrar solo la imagen principal del producto -->
+        <img *ngIf="getPrimaryImage(product)" [src]="getPrimaryImage(product)" class="card-img-top imgProduct" alt="imagen principal">
         <div class="card-body textCard">
-          <span class="spanProduct">
-            <div class="col-md-8">
-              <h5><strong>{{product.name}}</strong></h5>
-            </div>
-            <div class="col-md-4 productHeart">
-                <img class="imgHeart" src="../../../../../assets/Img/corazon-circular.png" alt="Heart Icon">
-            </div>
-          </span>
-          <p class="card-text">S/{{product.price}}</p>
+          <h5><strong>{{ product.name }}</strong></h5>
+          <p class="card-text">S/{{ product.price }}</p>
+          <button (click)="addToCart(product.id)" class="btn btn-primary">Añadir al Carrito</button>
         </div>
       </div>
     </div>

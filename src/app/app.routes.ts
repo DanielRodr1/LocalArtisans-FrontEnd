@@ -28,7 +28,7 @@ export const routes: Routes = [
     path: 'publication/:productId',
     loadComponent: () =>
       import('./components/pages/dynamic/publication/publication.component').then((c) => c.PublicationComponent)
-  },
+  },*/
   {
     path: 'list-product',
     loadComponent: () =>
@@ -38,7 +38,7 @@ export const routes: Routes = [
     path: 'publish-product',
     loadComponent: () =>
       import('./components/pages/static/publish-products/publish-products.component').then((c) => c.PublishProductsComponent),
-  },*/
+  },
   {
     path: 'shopping-cart',
     loadComponent: () =>
